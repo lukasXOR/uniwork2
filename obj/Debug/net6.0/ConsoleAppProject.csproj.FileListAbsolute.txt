@@ -1,0 +1,15 @@
+C:\Users\all4l\Documents\XOR\uni\cs\uniwork2\obj\Debug\net6.0\ConsoleAppProject.csproj.AssemblyReference.cache
+C:\Users\all4l\Documents\XOR\uni\cs\uniwork2\obj\Debug\net6.0\ConsoleAppProject.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\all4l\Documents\XOR\uni\cs\uniwork2\obj\Debug\net6.0\ConsoleAppProject.AssemblyInfoInputs.cache
+C:\Users\all4l\Documents\XOR\uni\cs\uniwork2\obj\Debug\net6.0\ConsoleAppProject.AssemblyInfo.cs
+C:\Users\all4l\Documents\XOR\uni\cs\uniwork2\obj\Debug\net6.0\ConsoleAppProject.csproj.CoreCompileInputs.cache
+C:\Users\all4l\Documents\XOR\uni\cs\uniwork2\bin\Debug\net6.0\ConsoleAppProject.exe
+C:\Users\all4l\Documents\XOR\uni\cs\uniwork2\bin\Debug\net6.0\ConsoleAppProject.deps.json
+C:\Users\all4l\Documents\XOR\uni\cs\uniwork2\bin\Debug\net6.0\ConsoleAppProject.runtimeconfig.json
+C:\Users\all4l\Documents\XOR\uni\cs\uniwork2\bin\Debug\net6.0\ConsoleAppProject.dll
+C:\Users\all4l\Documents\XOR\uni\cs\uniwork2\bin\Debug\net6.0\ConsoleAppProject.pdb
+C:\Users\all4l\Documents\XOR\uni\cs\uniwork2\obj\Debug\net6.0\ConsoleAppProject.dll
+C:\Users\all4l\Documents\XOR\uni\cs\uniwork2\obj\Debug\net6.0\refint\ConsoleAppProject.dll
+C:\Users\all4l\Documents\XOR\uni\cs\uniwork2\obj\Debug\net6.0\ConsoleAppProject.pdb
+C:\Users\all4l\Documents\XOR\uni\cs\uniwork2\obj\Debug\net6.0\ConsoleAppProject.genruntimeconfig.cache
+C:\Users\all4l\Documents\XOR\uni\cs\uniwork2\obj\Debug\net6.0\ref\ConsoleAppProject.dll
