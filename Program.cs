@@ -24,10 +24,10 @@ namespace ConsoleAppProject
             Console.WriteLine();
 
             DistanceConverter converter = new DistanceConverter();
-            //converter.run();
+            converter.run();
 
             BMI bmi = new BMI();
-            bmi.run();
+            //bmi.run();
         }
     }
 }
