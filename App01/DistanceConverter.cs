@@ -14,9 +14,18 @@ namespace ConsoleAppProject.App01
         */
         public void run() {
             Console.WriteLine("Distance Converter");
+            /* For testing
+            for (int i = 0; i < 10; i++)
+            {
+                Random r = new Random();
+                int from = r.Next(0, 5);
+                int to = r.Next(0, 5);
+                int value = r.Next(100, 1000000);
+                ConvertUnit(menuOptions[from], menuOptions[to], value);
+            }
+            */
             double optionFrom = CreateOption("unit to convert from?", "menu");
             double optionTo = CreateOption(menuOptions[(int)optionFrom] + " to?", "menu");
-            CleanConsole();
             double input = CreateOption("enter " + menuOptions[(int)optionFrom], "input");
             ConvertUnit(menuOptions[(int)optionFrom], menuOptions[(int)optionTo], input);
         }
