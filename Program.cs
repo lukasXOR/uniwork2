@@ -16,16 +16,16 @@ namespace ConsoleAppProject
         public static void Main(string[] args)
         {
             Console.ForegroundColor = ConsoleColor.Red;
-
+            Console.Clear();
             Console.WriteLine();
             Console.WriteLine(" =================================================");
             Console.WriteLine("    BNU CO453 Applications Programming 2022-2023! ");
-            Console.WriteLine(" =================================================");
+            Console.WriteLine("\r =================================================");
             Console.WriteLine("author: lukas");
 
             DistanceConverter converter = new DistanceConverter();
             converter.run();
-
+            
             BMI bmi = new BMI();
             //bmi.run();
         }

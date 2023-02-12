@@ -1,5 +1,6 @@
 ﻿using System;
-namespace ConsoleAppProject.App01{
+namespace ConsoleAppProject.App01
+{
     /// <summary>
     /// The app will convert units
     /// </summary>
@@ -7,29 +8,32 @@ namespace ConsoleAppProject.App01{
     /// lukass
     public class DistanceConverter {
         // we will use the index of the array to create a numbered menu AND to take the users option
-        public static string[] menuOptions = {"miles", "feet", "metre", "yard", "inch", "centimetre"};
+        public static string[] menuOptions = {"miles", "feet", "metres", "yards", "inches", "centimetres"};
         /*
         get needed inputs from user
         */
         public void run() {
             double optionFrom = CreateOption("unit to convert from?", "menu");
-            double optionTo = CreateOption("unit to convert to?", "menu");
+            double optionTo = CreateOption(menuOptions[(int)optionFrom] + " to?", "menu");
             double input = CreateOption("enter " + menuOptions[(int)optionFrom], "input");
             ConvertUnit(menuOptions[(int)optionFrom], menuOptions[(int)optionTo], input);
         }
-
-        public static string createMenu(string[] msg) {
+        public static string CreateMenu(string[] msg) {
             for (int i = 0; i < msg.Length; i++)
                 Console.WriteLine((i + 1) + " " + msg[i]); // (i + 1) because we want the options to start with 1
+
             return Console.ReadLine();
         }
-
         public void ConvertUnit(string from, string to, double input) {
+            if (from.Equals(to)) {
+                Console.WriteLine(input + " " + from + " is " + input + " " + from);
+                Environment.Exit(0);
+            }
             Console.Write(input + " " + from + " is ");
             /* 
             getMethod() lets us find a function in a given class based on a string
             Invoke() lets us use that function which will can call the conversions
-            you can pass arguments by giving it an object of parametres
+            you can pass argumssents by giving it an object of parametres
             */
             Console.Write(typeof(DistanceUnits).GetMethod(from + "_" + to).Invoke(this, new object[]{input}));
             Console.WriteLine(to);
@@ -45,7 +49,7 @@ namespace ConsoleAppProject.App01{
                     Console.WriteLine(input);
                     switch (type) {
                         case "menu":
-                            option = Double.Parse(createMenu(menuOptions));
+                            option = Double.Parse(CreateMenu(menuOptions));
                             if (option > menuOptions.Length) {
                                 Console.Clear();
                                 Console.WriteLine("Option provided is outside of menu range");
@@ -55,7 +59,7 @@ namespace ConsoleAppProject.App01{
                         case "input":
                             return Double.Parse(Console.ReadLine());
                     }
-                } catch (System.FormatException) { // this will be caught if letters are detected
+                } catch (FormatException) { // this will be caught if letters are detected
                     Console.Clear();
                     Console.WriteLine("Please enter a number according to the menu");
                     continue;
