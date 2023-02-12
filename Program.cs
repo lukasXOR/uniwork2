@@ -15,12 +15,12 @@ namespace ConsoleAppProject
     {
         public static void Main(string[] args)
         {
-            Console.ForegroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.Clear();
             Console.WriteLine();
-            Console.WriteLine(" =================================================");
+            Console.WriteLine("=================================================");
             Console.WriteLine("    BNU CO453 Applications Programming 2022-2023! ");
-            Console.WriteLine("\r =================================================");
+            Console.WriteLine("=================================================");
             Console.WriteLine("author: lukas");
 
             DistanceConverter converter = new DistanceConverter();
