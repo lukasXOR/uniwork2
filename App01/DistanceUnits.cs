@@ -21,7 +21,7 @@ namespace ConsoleAppProject.App01 {
 
         static double INCH_CENTIMETER = 2.54;
 
-        public static double miles_feets(double a) {return a * MILE_FEET;}
+        public static double miles_feet(double a) {return a * MILE_FEET;}
         public static double miles_metres(double a) {return a * MILE_METER;}
         public static double miles_yards(double a) {return a * MILE_YARD;}
         public static double miles_inches(double a) {return a * MILE_INCH;}

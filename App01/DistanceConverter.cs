@@ -13,39 +13,39 @@ namespace ConsoleAppProject.App01
         get needed inputs from user
         */
         public void run() {
+            Console.WriteLine("Distance Converter");
             double optionFrom = CreateOption("unit to convert from?", "menu");
-            CleanConsole();
             double optionTo = CreateOption(menuOptions[(int)optionFrom] + " to?", "menu");
+            CleanConsole();
             double input = CreateOption("enter " + menuOptions[(int)optionFrom], "input");
             ConvertUnit(menuOptions[(int)optionFrom], menuOptions[(int)optionTo], input);
         }
         public static void CleanConsole() {
-            while (Console.CursorTop != 4) {
-                Console.SetCursorPosition(0, Console.CursorTop);
-                Console.Write(new string(' ', Console.BufferWidth) + "\r");
+            while (Console.CursorTop != 5) {
                 Console.CursorTop -= 1;
+                Console.SetCursorPosition(0, Console.CursorTop);
+                Console.Write(new string(' ', Console.WindowWidth) + "\r");
             }
-            Console.Write(new string(' ', Console.BufferWidth) + "\r");
+            Console.Write(new string(' ', Console.WindowWidth) + "\r");
         }
         public static string CreateMenu(string[] msg) {
             for (int i = 0; i < msg.Length; i++)
                 Console.WriteLine((i + 1) + " " + msg[i]); // (i + 1) because we want the options to start with 1
-
             return Console.ReadLine();
         }
         public void ConvertUnit(string from, string to, double input) {
             if (from.Equals(to)) {
-                Console.WriteLine(input + " " + from + " is " + input + " " + from);
+                Console.WriteLine(" " + from + " is " + input + " " + from);
                 Environment.Exit(0);
             }
-            Console.Write(input + " " + from + " is ");
+            Console.Write(" " + from + " is ");
             /* 
             getMethod() lets us find a function in a given class based on a string
             Invoke() lets us use that function which then we can call the conversion methods,
             you can pass arguments by giving it an object of parametres
             */
             Console.Write(typeof(DistanceUnits).GetMethod(from + "_" + to).Invoke(this, new object[]{input}));
-            Console.WriteLine(to);
+            Console.WriteLine(" " + to);
         }
         /*
         retrieve inputs from user with creating a menu
@@ -59,17 +59,20 @@ namespace ConsoleAppProject.App01
                     switch (type) {
                         case "menu":
                             option = Double.Parse(CreateMenu(menuOptions));
+                            CleanConsole();
                             if (option > menuOptions.Length) {
-                                Console.Clear();
                                 Console.WriteLine("Option provided is outside of menu range");
                                 continue;
                             }
                             return option - 1;
                         case "input":
-                            return Double.Parse(Console.ReadLine());
+                            var s = Console.ReadLine();
+                            Console.CursorTop--;
+                            Console.CursorLeft = s.Length;
+                            return Double.Parse(s);
                     }
                 } catch (FormatException) { // this will be caught if letters are detected
-                    Console.Clear();
+                    CleanConsole();
                     Console.WriteLine("Please enter a number according to the menu");
                     continue;
                 }
