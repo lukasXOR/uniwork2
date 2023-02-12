@@ -14,9 +14,18 @@ namespace ConsoleAppProject.App01
         */
         public void run() {
             double optionFrom = CreateOption("unit to convert from?", "menu");
+            CleanConsole();
             double optionTo = CreateOption(menuOptions[(int)optionFrom] + " to?", "menu");
             double input = CreateOption("enter " + menuOptions[(int)optionFrom], "input");
             ConvertUnit(menuOptions[(int)optionFrom], menuOptions[(int)optionTo], input);
+        }
+        public static void CleanConsole() {
+            while (Console.CursorTop != 4) {
+                Console.SetCursorPosition(0, Console.CursorTop);
+                Console.Write(new string(' ', Console.BufferWidth) + "\r");
+                Console.CursorTop -= 1;
+            }
+            Console.Write(new string(' ', Console.BufferWidth) + "\r");
         }
         public static string CreateMenu(string[] msg) {
             for (int i = 0; i < msg.Length; i++)
@@ -32,8 +41,8 @@ namespace ConsoleAppProject.App01
             Console.Write(input + " " + from + " is ");
             /* 
             getMethod() lets us find a function in a given class based on a string
-            Invoke() lets us use that function which will can call the conversions
-            you can pass argumssents by giving it an object of parametres
+            Invoke() lets us use that function which then we can call the conversion methods,
+            you can pass arguments by giving it an object of parametres
             */
             Console.Write(typeof(DistanceUnits).GetMethod(from + "_" + to).Invoke(this, new object[]{input}));
             Console.WriteLine(to);
