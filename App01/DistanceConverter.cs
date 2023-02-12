@@ -26,6 +26,11 @@ namespace ConsoleAppProject.App01{
 
         public void convertUnit(string from, string to, double input) {
             Console.Write(input + " " + from + " is ");
+            /* 
+            getMethod() lets us find a function in a given class based on a string
+            Invoke() lets us use that function which will can call the conversions
+            you can pass arguments by giving it an object of parametres
+            */
             Console.Write(typeof(DistanceUnits).GetMethod(from + "_" + to).Invoke(this, new object[]{input}));
             Console.WriteLine(to);
         }
