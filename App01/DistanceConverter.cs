@@ -1,56 +1,61 @@
 ﻿using System;
-
 namespace ConsoleAppProject.App01{
     /// <summary>
-    /// Please describe the main features of this App
+    /// The app will convert units
     /// </summary>
     /// <author>
     /// lukas
     /// </author>
     public class DistanceConverter {
+        public static string[] menuOptions = {"miles", "feet", "metre", "yard", "inch", "centimetre"};
+        /*
+        get needed inputs from user
+        */
+        public void run() {
+            double optionFrom = createOption("unit to convert from?", "menu");
+            double optionTo = createOption("unit to convert to?", "menu");
+            double input = createOption("enter " + menuOptions[(int)optionFrom], "input");
+            convertUnit(menuOptions[(int)optionFrom], menuOptions[(int)optionTo], input);
+        }
+
         public static string createMenu(string[] msg) {
             for (int i = 0; i < msg.Length; i++)
-                Console.WriteLine(msg[i] + " " + (i + 1));
+                Console.WriteLine((i + 1) + " " + msg[i]); // (i + 1) because we want the options to start with 1
             return Console.ReadLine();
         }
-        public static string convertUnit(string from, string to, double input) {
-            double userInput = input;
-            //constants
-            int mileFeet = 5280;
-            double mileMetres = 1609.34;
-            double feetMetres = 0.3048;
-            switch (from) {
-                case "miles":
-                    if (to == "feet") userInput *= mileFeet;
-                    else if (to == "metres") userInput *= mileMetres;
-                    break;
-                case "feet":
-                    if (to == "miles") userInput /= mileFeet;
-                    else if (to == "metres") userInput /= feetMetres;
-                    break;
-                case "metres":
-                    if (to == "feet") userInput *= feetMetres;
-                    else if (to == "miles") userInput /= mileMetres;
-                    break;
-            }
-            Console.WriteLine(input + " " + from + " is " + userInput + " in " + to);
-            return "";
+
+        public void convertUnit(string from, string to, double input) {
+            Console.Write(input + " " + from + " is ");
+            Console.Write(typeof(DistanceUnits).GetMethod(from + "_" + to).Invoke(this, new object[]{input}));
+            Console.WriteLine(to);
         }
-        public void run()
-        {
-            string[] menuOptions = {"miles", "feet", "metres" };
-
-            Console.WriteLine("unit to convert from?");
-            int optionFrom = int.Parse(createMenu(menuOptions)) - 1;
-            
-            Console.WriteLine("unit to convert to?");
-            int optionTo = int.Parse(createMenu(menuOptions)) - 1;
-
-            Console.WriteLine("enter " + menuOptions[optionFrom]);
-            double input = Double.Parse(Console.ReadLine());
-
-            convertUnit(menuOptions[optionFrom], menuOptions[optionTo], input);
-
+        /*
+        retrieve inputs from user with creating a menu
+        it can take a menu option and also an actual value
+        */
+        public static Double createOption(string input, string type) {
+            Double option;
+            do {
+                try {
+                    Console.WriteLine(input);
+                    switch (type) {
+                        case "menu": // create a menu
+                            option = Double.Parse(createMenu(menuOptions));
+                            if (option > menuOptions.Length) {
+                                Console.Clear();
+                                Console.WriteLine("Option provided is outside of menu range");
+                                continue;
+                            }
+                            return option - 1;
+                        case "input": // only need a response from the user
+                            return Double.Parse(Console.ReadLine());
+                    }
+                } catch (System.FormatException) { // this will be caught if letters are detected
+                    Console.Clear();
+                    Console.WriteLine("Please enter a number according to the menu");
+                    continue;
+                }
+            } while (true); // infinite loop (true = true), until the user inputs a valid option
         }
     }
 }
