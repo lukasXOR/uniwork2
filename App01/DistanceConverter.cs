@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 namespace ConsoleAppProject.App01
 {
     /// <summary>
@@ -14,9 +15,8 @@ namespace ConsoleAppProject.App01
         */
         public void run() {
             Console.WriteLine("Distance Converter");
-            /* For testing
-            for (int i = 0; i < 10; i++)
-            {
+            /*
+            for (int i = 0; i < 10; i++) {
                 Random r = new Random();
                 int from = r.Next(0, 5);
                 int to = r.Next(0, 5);
