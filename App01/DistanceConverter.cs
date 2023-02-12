@@ -4,18 +4,18 @@ namespace ConsoleAppProject.App01{
     /// The app will convert units
     /// </summary>
     /// <author>
-    /// lukas
-    /// </author>
+    /// lukass
     public class DistanceConverter {
+        // we will use the index of the array to create a numbered menu AND to take the users option
         public static string[] menuOptions = {"miles", "feet", "metre", "yard", "inch", "centimetre"};
         /*
         get needed inputs from user
         */
         public void run() {
-            double optionFrom = createOption("unit to convert from?", "menu");
-            double optionTo = createOption("unit to convert to?", "menu");
-            double input = createOption("enter " + menuOptions[(int)optionFrom], "input");
-            convertUnit(menuOptions[(int)optionFrom], menuOptions[(int)optionTo], input);
+            double optionFrom = CreateOption("unit to convert from?", "menu");
+            double optionTo = CreateOption("unit to convert to?", "menu");
+            double input = CreateOption("enter " + menuOptions[(int)optionFrom], "input");
+            ConvertUnit(menuOptions[(int)optionFrom], menuOptions[(int)optionTo], input);
         }
 
         public static string createMenu(string[] msg) {
@@ -24,7 +24,7 @@ namespace ConsoleAppProject.App01{
             return Console.ReadLine();
         }
 
-        public void convertUnit(string from, string to, double input) {
+        public void ConvertUnit(string from, string to, double input) {
             Console.Write(input + " " + from + " is ");
             /* 
             getMethod() lets us find a function in a given class based on a string
@@ -38,13 +38,13 @@ namespace ConsoleAppProject.App01{
         retrieve inputs from user with creating a menu
         it can take a menu option and also an actual value
         */
-        public static Double createOption(string input, string type) {
+        public static Double CreateOption(string input, string type) {
             Double option;
             do {
                 try {
                     Console.WriteLine(input);
                     switch (type) {
-                        case "menu": // create a menu
+                        case "menu":
                             option = Double.Parse(createMenu(menuOptions));
                             if (option > menuOptions.Length) {
                                 Console.Clear();
@@ -52,7 +52,7 @@ namespace ConsoleAppProject.App01{
                                 continue;
                             }
                             return option - 1;
-                        case "input": // only need a response from the user
+                        case "input":
                             return Double.Parse(Console.ReadLine());
                     }
                 } catch (System.FormatException) { // this will be caught if letters are detected

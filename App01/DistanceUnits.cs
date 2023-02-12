@@ -6,7 +6,7 @@ namespace ConsoleAppProject.App01 {
         static double MILE_YARD = 1760;
         static double MILE_INCH = 63360;
         static double MILE_CENTIMETER = 160900;
-
+        
         static double FEET_METER = 3.281;
         static double FEET_YARD = 3;
         static double FEET_INCH = 12;
