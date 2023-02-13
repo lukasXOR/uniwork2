@@ -14,33 +14,17 @@ namespace ConsoleAppProject.App01
         */
         public void run() {
             Console.WriteLine("Distance Converter");
-            /* For testing
-            for (int i = 0; i < 10; i++) {
-                Random r = new Random();
-                int from = r.Next(0, 5);
-                int to = r.Next(0, 5);
-                int value = r.Next(100, 1000000);
-                ConvertUnit(menuOptions[from], menuOptions[to], value);
-            }
-            */
             double optionFrom = CreateOption("unit to convert from?", "menu");
             double optionTo = CreateOption(menuOptions[(int)optionFrom] + " to?", "menu");
             double input = CreateOption("enter " + menuOptions[(int)optionFrom], "input");
             ConvertUnit(menuOptions[(int)optionFrom], menuOptions[(int)optionTo], input);
-        }
-        public static void CleanConsole() {
-            while (Console.CursorTop != 5) {
-                Console.CursorTop -= 1;
-                Console.SetCursorPosition(0, Console.CursorTop);
-                Console.Write(new string(' ', Console.WindowWidth) + "\r");
-            }
-            Console.Write(new string(' ', Console.WindowWidth) + "\r");
         }
         public static string CreateMenu(string[] msg) {
             for (int i = 0; i < msg.Length; i++)
                 Console.WriteLine((i + 1) + " " + msg[i]); // (i + 1) because we want the options to start with 1
             return Console.ReadLine();
         }
+    
         public void ConvertUnit(string from, string to, double input) {
             if (from.Equals(to)) {
                 Console.WriteLine(" " + from + " is " + input + " " + from);
@@ -67,20 +51,20 @@ namespace ConsoleAppProject.App01
                     switch (type) {
                         case "menu":
                             option = Double.Parse(CreateMenu(menuOptions));
-                            CleanConsole();
+                            Program.CleanConsole();
                             if (option > menuOptions.Length) {
                                 Console.WriteLine("Option provided is outside of menu range");
                                 continue;
                             }
                             return option - 1;
                         case "input":
-                            var s = Console.ReadLine();
+                            string s = Console.ReadLine();
                             Console.CursorTop--;
                             Console.CursorLeft = s.Length;
                             return Double.Parse(s);
                     }
                 } catch (FormatException) { // this will be caught if letters are detected
-                    CleanConsole();
+                    Program.CleanConsole();
                     Console.WriteLine("Please enter a number according to the menu");
                     continue;
                 }

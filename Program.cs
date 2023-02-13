@@ -11,8 +11,21 @@ namespace ConsoleAppProject
     /// This Project has been modified by:
     /// Derek Peacock 05/02/2022
     /// </summary>
-    public static class Program
+    public class Program
     {
+        /* 
+        This will let us override previous and the current line of the terminal
+        to let outputs look cleaner
+        */
+        public static void CleanConsole() {
+            while (Console.CursorTop != 5) {
+                Console.CursorTop -= 1;
+                Console.SetCursorPosition(0, Console.CursorTop);
+                Console.Write(new string(' ', Console.WindowWidth) + "\r");
+            }
+            Console.Write(new string(' ', Console.WindowWidth) + "\r");
+        }
+        
         public static void Main(string[] args)
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
