@@ -11,10 +11,8 @@ namespace ConsoleAppProject
     /// This Project has been modified by:
     /// Derek Peacock 05/02/2022
     /// </summary>
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
+    public class Program {
+        public static void Main(string[] args) {
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.Clear();
             Console.WriteLine("=================================================");
