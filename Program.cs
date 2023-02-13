@@ -25,7 +25,7 @@ namespace ConsoleAppProject
             }
             Console.Write(new string(' ', Console.WindowWidth) + "\r");
         }
-        
+
         public static void Main(string[] args)
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -36,10 +36,10 @@ namespace ConsoleAppProject
             Console.WriteLine("author: lukas");
 
             DistanceConverter converter = new DistanceConverter();
-            converter.run();
+            //converter.run();
             
             BMI bmi = new BMI();
-            //bmi.run();
+            bmi.run();
         }
     }
 }

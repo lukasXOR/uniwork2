@@ -28,7 +28,7 @@ namespace ConsoleAppProject.App01
         public void ConvertUnit(string from, string to, double input) {
             if (from.Equals(to)) {
                 Console.WriteLine(" " + from + " is " + input + " " + from);
-                Environment.Exit(0);
+                return;
             }
             Console.Write(" " + from + " is ");
             /* 
