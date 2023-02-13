@@ -5,7 +5,7 @@ namespace ConsoleAppProject.App01
     /// The app will convert units
     /// </summary>
     /// <author>
-    /// lukass
+    /// lukas
     public class DistanceConverter {
         // we will use the index of the array to create a numbered menu AND to take the users option
         public static string[] menuOptions = {"miles", "feet", "metres", "yards", "inches", "centimetres"};
@@ -14,17 +14,11 @@ namespace ConsoleAppProject.App01
         */
         public void run() {
             Console.WriteLine("Distance Converter");
-            double optionFrom = CreateOption("unit to convert from?", "menu");
-            double optionTo = CreateOption(menuOptions[(int)optionFrom] + " to?", "menu");
-            double input = CreateOption("enter " + menuOptions[(int)optionFrom], "input");
+            double optionFrom = Utility.CreateOption("unit to convert from?", "menu", menuOptions);
+            double optionTo = Utility.CreateOption(menuOptions[(int)optionFrom] + " to?", "menu", menuOptions);
+            double input = Utility.CreateOption("enter " + menuOptions[(int)optionFrom], "input", menuOptions);
             ConvertUnit(menuOptions[(int)optionFrom], menuOptions[(int)optionTo], input);
         }
-        public static string CreateMenu(string[] msg) {
-            for (int i = 0; i < msg.Length; i++)
-                Console.WriteLine((i + 1) + " " + msg[i]); // (i + 1) because we want the options to start with 1
-            return Console.ReadLine();
-        }
-    
         public void ConvertUnit(string from, string to, double input) {
             if (from.Equals(to)) {
                 Console.WriteLine(" " + from + " is " + input + " " + from);
@@ -38,37 +32,6 @@ namespace ConsoleAppProject.App01
             */
             Console.Write(typeof(DistanceUnits).GetMethod(from + "_" + to).Invoke(this, new object[]{input}));
             Console.WriteLine(" " + to);
-        }
-        /*
-        retrieve inputs from user with creating a menu
-        it can take a menu option and also an actual value
-        */
-        public static Double CreateOption(string input, string type) {
-            Double option;
-            do {
-                try {
-                    Console.WriteLine(input);
-                    switch (type) {
-                        case "menu":
-                            option = Double.Parse(CreateMenu(menuOptions));
-                            Program.CleanConsole();
-                            if (option > menuOptions.Length) {
-                                Console.WriteLine("Option provided is outside of menu range");
-                                continue;
-                            }
-                            return option - 1;
-                        case "input":
-                            string s = Console.ReadLine();
-                            Console.CursorTop--;
-                            Console.CursorLeft = s.Length;
-                            return Double.Parse(s);
-                    }
-                } catch (FormatException) { // this will be caught if letters are detected
-                    Program.CleanConsole();
-                    Console.WriteLine("Please enter a number according to the menu");
-                    continue;
-                }
-            } while (true); // infinite loop (true = true), until the user inputs a valid option
         }
     }
 }
