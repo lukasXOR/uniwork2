@@ -10,29 +10,39 @@ namespace ConsoleAppProject.App02
     /// </author>
     public class BMI
     {
-        public void run()
-        {
-            Console.WriteLine("enter weight in kg");
-            double usrWeight = Double.Parse(Console.ReadLine());
+        public void run() {
+            Console.WriteLine("BMI Calculator");
+            string[] menuOptions = {"imperial stones/pounds feet/inches", "metric kg metres"};
+            double optionUnit = Utility.CreateOption("unit?", "menu", menuOptions);
+            string[] info = menuOptions[(int)optionUnit].Split(" ");
+            double optionWeight = Utility.CreateOption("enter weight " + info[1], "input", new string[0]);
+            Console.WriteLine();
+            double optionHeight = Utility.CreateOption("enter height " + info[2], "input", new string[0]);
+            Utility.CleanConsole();
+            double userBMI = 0;
+            switch (optionUnit) {
+                case 1:
+                    userBMI = (optionWeight * 703) / Math.Pow(optionHeight, 2);
+                    break;
+                case 2:
+                    userBMI = optionWeight / Math.Pow(optionHeight, 2);
+                    break;
+            }
 
-            Console.WriteLine("height in metres");
-            double usrHeight = Math.Pow(Double.Parse(Console.ReadLine()), 2);
+            Console.Write("BMI" + Math.Round(userBMI, 4) + " ");
 
-            double usrBMI = usrWeight / usrHeight;
-            Console.Write(Math.Round(usrBMI, 4) + " ");
-
-            if (usrBMI < 18.5)
-                Console.WriteLine("underweight");
-            else if (usrBMI > 18.5 && usrBMI < 24.9)
-                Console.WriteLine("normal");
-            else if (usrBMI > 25 && usrBMI < 29.9)
-                Console.WriteLine("overweight");
-            else if (usrBMI > 30 && usrBMI < 34.9)
-                Console.WriteLine("obese class I");
-            else if (usrBMI > 35.0 && usrBMI < 39.9)
-                Console.WriteLine("obese class II");
-            else if (usrBMI > 40.0)
-                Console.WriteLine("obese class III");
+            if (userBMI < 18.5)
+                Console.WriteLine(Unit.Underweight);
+            else if (userBMI > 18.5 && userBMI < 24.9)
+                Console.WriteLine(Unit.Normal);
+            else if (userBMI > 25 && userBMI < 29.9)
+                Console.WriteLine(Unit.Overweight);
+            else if (userBMI > 30 && userBMI < 34.9)
+                Console.WriteLine(Unit.ObeseI);
+            else if (userBMI > 35.0 && userBMI < 39.9)
+                Console.WriteLine(Unit.ObeseII);
+            else if (userBMI > 40.0)
+                Console.WriteLine(Unit.ObeseIII);
         }
     }
 }
