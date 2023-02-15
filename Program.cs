@@ -9,7 +9,7 @@ namespace ConsoleAppProject {
             Console.WriteLine("=================================================");
             Console.WriteLine("by lukas");
             while (true)
-                Utility.CreateMainMenu(Utility.getAllOptions());
+                Utility.CreateMainMenu(Utility.GetMenuOptions());
         }
     }
 }
