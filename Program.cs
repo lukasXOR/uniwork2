@@ -25,6 +25,19 @@ namespace ConsoleAppProject
             Assembly a = typeof(Program).GetTypeInfo().Assembly;
             return Array.FindAll(a.GetTypes(), c => c.ToString().Contains("App0"));;
         }
-
+        public static void CreateMainMenu(Type[] allClass) {
+            Assembly a = typeof(Program).GetTypeInfo().Assembly;
+            Type[] t = a.GetTypes();
+            for (int i = t.Length - 1; i > 0; i--) {
+                string className = t[i].ToString();
+                if (className.Contains("App0")) {
+                    Console.WriteLine(className);
+                }
+                if (t[i].Name.Equals("DistanceConverter")) {
+                    dynamic d = Activator.CreateInstance(t[i]);
+                    d.run();
+                }
+            }
+        }
     }
 }
