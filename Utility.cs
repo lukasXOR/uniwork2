@@ -1,5 +1,4 @@
 using System;
-//All these methods will be used in all the apps
 namespace ConsoleAppProject {
     public class Utility {
         /* 
@@ -37,12 +36,16 @@ namespace ConsoleAppProject {
                         case "menu":
                             option = Double.Parse(CreateMenu(menu));
                             CleanConsole();
-                            if (option > menu.Length) {
+                            if (option > menu.Length || option == 0) {
                                 Console.WriteLine("Option provided is outside of menu range");
                                 continue;
                             }
                             return option - 1;
                         case "input":
+                            option = Double.Parse(Console.ReadLine());
+                            CleanConsole();
+                            return option;
+                        case "finput":
                             string s = Console.ReadLine();
                             Console.CursorTop--;
                             Console.CursorLeft = s.Length;
