@@ -1,5 +1,5 @@
 ﻿// conversion units taken from google and uniconverters.net
-namespace ConsoleAppProject.App01 { 
+namespace ConsoleAppProject { 
     public class DistanceUnits {
         static double MILE_FEET = 5280;
         static double MILE_METER = 1609.34;

@@ -16,7 +16,7 @@ namespace ConsoleAppProject.App01
             Console.WriteLine("Distance Converter");
             double optionFrom = Utility.CreateOption("unit to convert from?", "menu", menuOptions);
             double optionTo = Utility.CreateOption(menuOptions[(int)optionFrom] + " to?", "menu", menuOptions);
-            double input = Utility.CreateOption("enter " + menuOptions[(int)optionFrom], "input", menuOptions);
+            double input = Utility.CreateOption("enter " + menuOptions[(int)optionFrom], "finput", menuOptions);
             ConvertUnit(menuOptions[(int)optionFrom], menuOptions[(int)optionTo], input);
         }
         public void ConvertUnit(string from, string to, double input) {

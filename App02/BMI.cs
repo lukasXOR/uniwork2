@@ -15,15 +15,13 @@ namespace ConsoleAppProject.App02
             double optionUnit = Utility.CreateOption("unit?", "menu", menuOptions);
             string[] info = menuOptions[(int)optionUnit].Split(" ");
             double optionWeight = Utility.CreateOption("enter weight " + info[1], "input", new string[0]);
-            Console.WriteLine();
-            double optionHeight = Utility.CreateOption("enter height " + info[2], "input", new string[0]);
-            Console.WriteLine();
+            double optionHeight = Utility.CreateOption("enter height " + info[2], "finput", new string[0]);
             calcBMI((int)optionUnit, optionWeight, optionHeight);
         }
-        public static void calcBMI(int unit, double weight, double height) {
+        public void calcBMI(int unit, double weight, double height) {
             double userBMI = (unit == 0 ? weight * 703 : weight) / Math.Pow(height, 2);
 
-            Console.Write("BMI " + Math.Round(userBMI, 4) + " ");
+            Console.Write(" is " + Math.Round(userBMI, 4) + " Classed at: ");
 
             if (userBMI < 18.5) Console.WriteLine(Unit.Underweight);
             else if (userBMI > 18.5 && userBMI < 24.9)  Console.WriteLine(Unit.Normal);
