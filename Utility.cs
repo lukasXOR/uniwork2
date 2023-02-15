@@ -71,5 +71,29 @@ namespace ConsoleAppProject {
             Assembly a = typeof(Program).GetTypeInfo().Assembly;
             return Array.FindAll(a.GetTypes(), c => c.ToString().Contains(type));
         }
+        /* 
+        Fetch all class names to create the main menu
+        */
+        public static string[] getAllOptions() {
+            Type[] t = Utility.getType("App0");
+            string[] options = new string[t.Length];
+            for (var (i, x) = (t.Length - 1, 0); i >= 0; i--, x++) {
+                options[x] = t[i].Name; 
+            }
+            return options;
+        }
+        /* 
+        Get the program the user wants to use and instantiate it.
+        */
+        public static void CreateMainMenu(string[] menuOptions) {
+            double option = Utility.CreateOption("Program to run", "menu", menuOptions);
+            Type[] t = Utility.getType(menuOptions[(int)option]);
+            for (int i = 0; i < t.Length; i++) {
+                Utility.CleanConsole();
+                // we use dynamic data type because we don't know what class to use until file compilation
+                dynamic d = Activator.CreateInstance(t[i]);
+                d.run();
+            }
+        }
     }
 }
