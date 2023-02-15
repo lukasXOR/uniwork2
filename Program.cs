@@ -13,30 +13,32 @@ namespace ConsoleAppProject
     /// Derek Peacock 05/02/2022
     /// </summary>
     public class Program {
+        public static string[] menu;
+        public static Assembly a = typeof(Program).GetTypeInfo().Assembly;
         public static void Main(string[] args) {
-            Type[] programClasses = getTypes();
+            menu = getAllOptions();
             Console.ForegroundColor = ConsoleColor.Cyan;
-            //Console.Clear();
+            Console.Clear();
             Console.WriteLine("=================================================");
             Console.WriteLine("    BNU CO453 Applications Programming 2022-2023! ");
             Console.WriteLine("=================================================");
+            while (true)
+                CreateMainMenu(menu);
         }
-        public static Type[] getTypes() {
-            Assembly a = typeof(Program).GetTypeInfo().Assembly;
-            return Array.FindAll(a.GetTypes(), c => c.ToString().Contains("App0"));;
+        public static string[] getAllOptions() {
+            Type[] t = Array.FindAll(a.GetTypes(), c => c.ToString().Contains("App0"));
+            string[] options = new string[t.Length];
+            for (var (i, x) = (t.Length - 1, 0); i >= 0; i--, x++) {
+                options[x] = t[i].Name; 
+            }
+            return options;
         }
-        public static void CreateMainMenu(Type[] allClass) {
-            Assembly a = typeof(Program).GetTypeInfo().Assembly;
-            Type[] t = a.GetTypes();
-            for (int i = t.Length - 1; i > 0; i--) {
-                string className = t[i].ToString();
-                if (className.Contains("App0")) {
-                    Console.WriteLine(className);
-                }
-                if (t[i].Name.Equals("DistanceConverter")) {
-                    dynamic d = Activator.CreateInstance(t[i]);
-                    d.run();
-                }
+        public static void CreateMainMenu(string[] menuOptions) {
+            double option = Utility.CreateOption("Program to run", "menu", menu);
+            Type[] t = Array.FindAll(a.GetTypes(), c => c.ToString().Contains(menu[(int)option]));
+            for (int i = 0; i < t.Length; i++) {
+                dynamic d = Activator.CreateInstance(t[i]);
+                d.run();
             }
         }
     }
