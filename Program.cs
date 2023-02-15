@@ -1,7 +1,4 @@
-﻿using ConsoleAppProject.App01;
-using ConsoleAppProject.App02;
-using System;
-using System.Reflection;
+﻿using System;
 namespace ConsoleAppProject
 {
     /// <summary>
@@ -14,7 +11,6 @@ namespace ConsoleAppProject
     /// </summary>
     public class Program {
         public static string[] menu;
-        public static Assembly a = typeof(Program).GetTypeInfo().Assembly;
         public static void Main(string[] args) {
             menu = getAllOptions();
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -26,7 +22,7 @@ namespace ConsoleAppProject
                 CreateMainMenu(menu);
         }
         public static string[] getAllOptions() {
-            Type[] t = Array.FindAll(a.GetTypes(), c => c.ToString().Contains("App0"));
+            Type[] t = Utility.getType("App0");
             string[] options = new string[t.Length];
             for (var (i, x) = (t.Length - 1, 0); i >= 0; i--, x++) {
                 options[x] = t[i].Name; 
@@ -35,7 +31,7 @@ namespace ConsoleAppProject
         }
         public static void CreateMainMenu(string[] menuOptions) {
             double option = Utility.CreateOption("Program to run", "menu", menu);
-            Type[] t = Array.FindAll(a.GetTypes(), c => c.ToString().Contains(menu[(int)option]));
+            Type[] t = Utility.getType(menu[(int)option]);
             for (int i = 0; i < t.Length; i++) {
                 dynamic d = Activator.CreateInstance(t[i]);
                 d.run();

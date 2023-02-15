@@ -1,4 +1,5 @@
 using System;
+using System.Reflection;
 namespace ConsoleAppProject {
     public class Utility {
         /* 
@@ -57,6 +58,18 @@ namespace ConsoleAppProject {
                     continue;
                 }
             } while (true); // infinite loop (true = true), until the user inputs a valid option
+        }
+        /* 
+        This lets us find a class by a string, it works by first fetching the assembly,
+        the assembly is the compiled file (dll, exe) that contains everything needed to run
+        the program, we are using it here to get all the classes. We first get the assembly by
+        using any class in the program with the GetTypeInfo(), which returns a TypeInfo which is just
+        an extension of Type that contains the assembly (.Assembly). From here we create and 
+        filter an array by the string of the class name we want to fetch by all the compiled classes.
+        */
+        public static Type[] getType(string type) {
+            Assembly a = typeof(Program).GetTypeInfo().Assembly;
+            return Array.FindAll(a.GetTypes(), c => c.ToString().Contains(type));
         }
     }
 }
