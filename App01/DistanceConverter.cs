@@ -13,7 +13,6 @@ namespace ConsoleAppProject.App01
         get needed inputs from user
         */
         public void run() {
-            Console.WriteLine("Distance Converter");
             double optionFrom = Utility.CreateOption("unit to convert from?", "menu", menuOptions);
             double optionTo = Utility.CreateOption(menuOptions[(int)optionFrom] + " to?", "menu", menuOptions);
             double input = Utility.CreateOption("enter " + menuOptions[(int)optionFrom], "finput", menuOptions);
