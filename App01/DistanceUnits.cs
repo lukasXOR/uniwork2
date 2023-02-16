@@ -45,7 +45,7 @@ namespace ConsoleAppProject {
         public static double yards_inches(double a) {return a * YARD_INCH;}
         public static double yards_centimetres(double a) {return a * YARD_CENTIMETRES;}
 
-        public static double inches_feet(double a) {return a * FEET_INCH;}
+        public static double inches_feet(double a) {return a / FEET_INCH;}
         public static double inches_metres(double a) {return a / METRE_INCH;}
         public static double inches_yards(double a) {return a / YARD_INCH;}
         public static double inches_miles(double a) {return a / MILE_INCH;}
