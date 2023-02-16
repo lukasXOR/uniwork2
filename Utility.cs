@@ -8,13 +8,12 @@ namespace ConsoleAppProject {
         terminal and cleaning it until it goes back to the 5th line. The 5th line
         is where the main headers are for the terminal so thats where we stop.
         */
-        public static void CleanConsole(int lineNum) {
-            while (Console.CursorTop != lineNum) {
+        public static void CleanConsole() {
+            while (Console.CursorTop > 4) {
                 Console.CursorTop -= 1;
                 Console.SetCursorPosition(0, Console.CursorTop);
-                Console.Write(new string(' ', Console.WindowWidth) + "\r");
+                Console.Write(new string(' ', Console.BufferWidth - 1) + "\r");
             }
-            Console.Write(new string(' ', Console.WindowWidth) + "\r");
         }
         /* 
         Create numbered menu
@@ -36,7 +35,7 @@ namespace ConsoleAppProject {
                     switch (type) {
                         case "menu":
                             option = Double.Parse(CreateMenu(menu));
-                            CleanConsole(5);
+                            CleanConsole();
                             if (option > menu.Length || option == 0) {
                                 Console.WriteLine("Option provided is outside of menu range");
                                 continue;
@@ -44,7 +43,7 @@ namespace ConsoleAppProject {
                             return option - 1;
                         case "input":
                             option = Double.Parse(Console.ReadLine());
-                            CleanConsole(5);
+                            CleanConsole();
                             return option;
                         case "finput":
                             string s = Console.ReadLine();
@@ -53,7 +52,7 @@ namespace ConsoleAppProject {
                             return Double.Parse(s);
                     }
                 } catch (FormatException) { // this will be caught if letters are detected
-                    CleanConsole(5);
+                    CleanConsole();
                     Console.WriteLine("Please enter a number according to the menu");
                     continue;
                 }
@@ -72,28 +71,30 @@ namespace ConsoleAppProject {
             return Array.FindAll(a.GetTypes(), c => c.ToString().Contains(type));
         }
         /* 
-        Fetch all class names to create the main menu
+        Fetch all class names to create the main menu, then reverse them because the assembly
+        gives us the classes in the wrong order
         */
         public static string[] GetMenuOptions() {
             Type[] t = GetType("App0");
             string[] options = new string[t.Length];
-            for (var (i, x) = (t.Length - 1, 0); i >= 0; i--, x++)
-                options[x] = t[i].Name;
+            for (var (i, x) = (t.Length - 1, 0); i >= 0; i--, x++) {
+                options[x] = t[i].Name; 
+            }
             return options;
         }
         /* 
         Get the program the user wants to use and instantiate it.
         */
         public static void CreateMainMenu(string[] menuOptions) {
-            CleanConsole(4);
+            CleanConsole();
             string titlePrompt = "Program to run: ";
             double option = CreateOption(titlePrompt, "menu", menuOptions);
             Type[] t = GetType(menuOptions[(int)option]);
             for (int i = 0; i < t.Length; i++) {
-                CleanConsole(4);
-                // we use dynamic data type because we don't know what class to use until file compilation
+                CleanConsole();
+                // we use the dynamic data type because we don't know what class to use until file compilation
                 dynamic d = Activator.CreateInstance(t[i]);
-                Console.WriteLine(d.programDesc + new string(' ', Console.WindowWidth));
+                Console.WriteLine(d.programDesc);
                 d.run();
                 Console.Write("Enter to restart");
                 Console.ReadLine();
