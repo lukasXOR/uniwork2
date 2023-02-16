@@ -7,8 +7,9 @@ namespace ConsoleAppProject.App01
     /// <author>
     /// lukas
     public class DistanceConverter {
+        public string programDesc = "Distance Converter";
         // we will use the index of the array to create a numbered menu AND to take the users option
-        public static string[] menuOptions = {"miles", "feet", "metres", "yards", "inches", "centimetres"};
+        public string[] menuOptions = {"miles", "feet", "metres", "yards", "inches", "centimetres"};
         /*
         get needed inputs from user
         */

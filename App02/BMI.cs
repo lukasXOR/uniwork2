@@ -9,6 +9,7 @@ namespace ConsoleAppProject.App02
     /// Student Name version 0.1
     /// </author>
     public class BMI {
+        public string programDesc = "BMI Calculator";
         public void run() {
             string[] menuOptions = {"imperial stones/pounds feet/inches", "metric kg metres"};
             double optionUnit = Utility.CreateOption("unit?", "menu", menuOptions);
