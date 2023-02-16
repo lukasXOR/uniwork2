@@ -5,7 +5,7 @@ namespace ConsoleAppProject {
         /* 
         This will let us override previous and the current line of the terminal
         to let outputs look cleaner. It works by going through each line of the
-        terminal and cleaning it until it goes back to the 5th line. The 5th line
+        terminal and cleaning it until it goes back to the 4th line. The 5th line
         is where the main headers are for the terminal so thats where we stop.
         */
         public static void CleanConsole() {
