@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.Reflection;
 namespace ConsoleAppProject.App01
 {
     /// <summary>
@@ -19,6 +20,10 @@ namespace ConsoleAppProject.App01
             double input = Utility.CreateOption("enter " + menuOptions[(int)optionFrom], "finput", menuOptions);
             ConvertUnit(menuOptions[(int)optionFrom], menuOptions[(int)optionTo], input);
         }
+        /*
+        convert the units given, if the from and to unit are the same then dont bother in converting
+        and just return the same value.
+        */
         public void ConvertUnit(string from, string to, double input) {
             if (from.Equals(to)) {
                 Console.WriteLine(" " + from + " is " + input + " " + from);
