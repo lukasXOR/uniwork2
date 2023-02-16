@@ -20,7 +20,8 @@ namespace ConsoleAppProject {
         */
         public static string CreateMenu(string[] msg) {
             for (int i = 0; i < msg.Length; i++)
-                Console.WriteLine((i + 1) + " " + msg[i]); // (i + 1) because we want the options to start with 1
+                // (i + 1) because we want the options to start with 1
+                Console.WriteLine((i + 1) + " " + msg[i]);
             return Console.ReadLine();
         }
         /*
