@@ -77,9 +77,8 @@ namespace ConsoleAppProject {
         public static string[] GetMenuOptions() {
             Type[] t = GetType("App0");
             string[] options = new string[t.Length];
-            for (var (i, x) = (t.Length - 1, 0); i >= 0; i--, x++) {
-                options[x] = t[i].Name; 
-            }
+            for (var (i, x) = (t.Length - 1, 0); i >= 0; i--, x++)
+                options[x] = t[i].Name;
             return options;
         }
         /* 
