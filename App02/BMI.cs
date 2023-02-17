@@ -15,7 +15,7 @@ namespace ConsoleAppProject.App02
             double optionUnit = Utility.CreateOption("unit?", "menu", menuOptions);
             string[] info = menuOptions[(int)optionUnit].Split(" ");
             double optionWeight = Utility.CreateOption("enter weight " + info[1], "input", new string[0]);
-            double optionHeight = Utility.CreateOption("enter height " + info[2], "finput", new string[0]);
+            double optionHeight = Utility.CreateOption("enter height " + info[2], "display", new string[0]);
             calcBMI((int)optionUnit, optionWeight, optionHeight);
         }
         public void calcBMI(int unit, double weight, double height) {

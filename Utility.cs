@@ -46,7 +46,9 @@ namespace ConsoleAppProject {
                             option = Double.Parse(Console.ReadLine());
                             CleanConsole();
                             return option;
-                        case "finput":
+                        case "display":
+                            // get the input and then go back to that position
+                            // we can display the answer after it
                             string s = Console.ReadLine();
                             Console.CursorTop--;
                             Console.CursorLeft = s.Length;
@@ -57,7 +59,7 @@ namespace ConsoleAppProject {
                     Console.WriteLine("Please enter a number according to the menu");
                     continue;
                 }
-            } while (true); // infinite loop (true = true), until the user inputs a valid option
+            } while (true); // infinite loop (true == true), until the user inputs a valid option
         }
         /* 
         This lets us find a class by a string, it works by first fetching the assembly,
@@ -90,16 +92,16 @@ namespace ConsoleAppProject {
             CleanConsole();
             string titlePrompt = "Program to run: ";
             double option = CreateOption(titlePrompt, "menu", menuOptions);
-            Type[] t = GetType(menuOptions[(int)option]);
-            for (int i = 0; i < t.Length; i++) {
-                CleanConsole();
-                // we use the dynamic data type because we don't know what class to use until file compilation
-                dynamic d = Activator.CreateInstance(t[i]);
-                Console.WriteLine(d.programDesc);
-                d.run();
-                Console.Write("Enter to restart");
-                Console.ReadLine();
-            }
+            Type t = GetType(menuOptions[(int)option])[0];
+
+            // we use the dynamic data type because we don't know what class to use until file compilation
+            dynamic d = Activator.CreateInstance(t);
+
+            Console.WriteLine(d.programDesc);
+            d.run();
+
+            Console.Write("Enter to restart");
+            Console.ReadLine();
         }
     }
 }

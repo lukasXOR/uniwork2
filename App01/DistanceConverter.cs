@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Reflection;
 namespace ConsoleAppProject.App01
 {
@@ -17,7 +17,7 @@ namespace ConsoleAppProject.App01
         public void run() {
             double optionFrom = Utility.CreateOption("unit to convert from?", "menu", menuOptions);
             double optionTo = Utility.CreateOption(menuOptions[(int)optionFrom] + " to?", "menu", menuOptions);
-            double input = Utility.CreateOption("enter " + menuOptions[(int)optionFrom], "finput", menuOptions);
+            double input = Utility.CreateOption("enter " + menuOptions[(int)optionFrom], "display", menuOptions);
             ConvertUnit(menuOptions[(int)optionFrom], menuOptions[(int)optionTo], input);
         }
         /*
