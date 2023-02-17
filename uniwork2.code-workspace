@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "uniwork2",
+			"path": "."
+		},
+		{
+			"name": "apptests",
+			"path": "../../../../../source/repos/uniwork2/apptests"
+		}
+	],
+	"settings": {}
+}
