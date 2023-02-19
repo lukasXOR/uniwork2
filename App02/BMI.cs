@@ -22,11 +22,11 @@
             Console.Write(" is " + Math.Round(userBMI, 4) + " Classed at: ");
 
             if (userBMI < 18.5) Console.WriteLine(Unit.Underweight);
-            else if (userBMI > 18.5 && userBMI < 24.9)  Console.WriteLine(Unit.Normal);
-            else if (userBMI > 25 && userBMI < 29.9) Console.WriteLine(Unit.Overweight);
-            else if (userBMI > 30 && userBMI < 34.9) Console.WriteLine(Unit.ObeseI);
-            else if (userBMI > 35.0 && userBMI < 39.9) Console.WriteLine(Unit.ObeseII);
-            else if (userBMI > 40.0) Console.WriteLine(Unit.ObeseIII);   
+            else if (userBMI >= 18.5 && userBMI < 24.9)  Console.WriteLine(Unit.Normal);
+            else if (userBMI >= 25 && userBMI < 29.9) Console.WriteLine(Unit.Overweight);
+            else if (userBMI >= 30 && userBMI < 34.9) Console.WriteLine(Unit.ObeseI);
+            else if (userBMI >= 35.0 && userBMI < 39.9) Console.WriteLine(Unit.ObeseII);
+            else if (userBMI >= 40.0) Console.WriteLine(Unit.ObeseIII);   
 
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("note that you should assume these values are inaccurate if");
