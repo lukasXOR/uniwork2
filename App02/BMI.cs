@@ -1,6 +1,4 @@
-﻿
-using System;
-namespace ConsoleAppProject.App02
+﻿namespace ConsoleAppProject.App02
 {
     /// <summary>
     /// Please describe the main features of this App

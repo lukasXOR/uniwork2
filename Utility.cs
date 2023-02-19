@@ -1,4 +1,3 @@
-using System;
 using System.Reflection;
 namespace ConsoleAppProject {
     public class Utility {
@@ -90,8 +89,7 @@ namespace ConsoleAppProject {
         */
         public static void CreateMainMenu(string[] menuOptions) {
             CleanConsole();
-            string titlePrompt = "Program to run: ";
-            double option = CreateOption(titlePrompt, "menu", menuOptions);
+            double option = CreateOption("Program to run: ", "menu", menuOptions);
             Type t = GetType(menuOptions[(int)option])[0];
 
             // we use the dynamic data type because we don't know what class to use until file compilation
