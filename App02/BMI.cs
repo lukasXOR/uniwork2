@@ -1,21 +1,25 @@
-﻿namespace ConsoleAppProject.App02
-{
+﻿namespace ConsoleAppProject.App02 {
     /// <summary>
-    /// Please describe the main features of this App
+    /// The app will calculate BMI
     /// </summary>
     /// <author>
-    /// Student Name version 0.1
-    /// </author>
+    /// lukas
     public class BMI {
         public string programDesc = "BMI Calculator";
+        public string[] menuOptions = { "imperial stones/pounds feet/inches", "metric kg metres" };
+        /*
+        get needed inputs from users
+        */
         public void run() {
-            string[] menuOptions = {"imperial stones/pounds feet/inches", "metric kg metres"};
             double optionUnit = Utility.CreateOption("unit?", "menu", menuOptions);
             string[] info = menuOptions[(int)optionUnit].Split(" ");
             double optionWeight = Utility.CreateOption("enter weight " + info[1], "input", new string[0]);
             double optionHeight = Utility.CreateOption("enter height " + info[2], "display", new string[0]);
             calcBMI((int)optionUnit, optionWeight, optionHeight);
         }
+        /*
+        calculate, round, class and display the BMI score
+        */
         public void calcBMI(int unit, double weight, double height) {
             double userBMI = (unit == 0 ? weight * 703 : weight) / Math.Pow(height, 2);
 
