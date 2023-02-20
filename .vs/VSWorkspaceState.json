@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\App01",
+    "\\App02"
   ],
-  "SelectedNode": "\\C:\\Users\\all4l\\source\\repos\\co453",
+  "SelectedNode": "\\App01\\DistanceConverter.cs",
   "PreviewInSolutionExplorer": false
 }

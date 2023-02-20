@@ -1,4 +1,5 @@
-﻿namespace ConsoleAppProject {
+﻿using System;
+namespace ConsoleAppProject {
     public class Program {
         public static void Main(string[] args) {
             Console.ForegroundColor = ConsoleColor.Cyan;

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\all4l\\source\\repos\\uni\\apptests\\apptests.csproj": {}
+    "C:\\Users\\all4l\\source\\repos\\co453\\apptests\\apptests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\all4l\\source\\repos\\uni\\apptests\\apptests.csproj": {
+    "C:\\Users\\all4l\\source\\repos\\co453\\apptests\\apptests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\all4l\\source\\repos\\uni\\apptests\\apptests.csproj",
+        "projectUniqueName": "C:\\Users\\all4l\\source\\repos\\co453\\apptests\\apptests.csproj",
         "projectName": "apptests",
-        "projectPath": "C:\\Users\\all4l\\source\\repos\\uni\\apptests\\apptests.csproj",
+        "projectPath": "C:\\Users\\all4l\\source\\repos\\co453\\apptests\\apptests.csproj",
         "packagesPath": "C:\\Users\\all4l\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\all4l\\source\\repos\\uni\\apptests\\obj\\",
+        "outputPath": "C:\\Users\\all4l\\source\\repos\\co453\\apptests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\all4l\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\all4l\\source\\repos\\uni\\uni\\uni.csproj": {
-                "projectPath": "C:\\Users\\all4l\\source\\repos\\uni\\uni\\uni.csproj"
+              "C:\\Users\\all4l\\source\\repos\\co453\\ConsoleAppProject.csproj": {
+                "projectPath": "C:\\Users\\all4l\\source\\repos\\co453\\ConsoleAppProject.csproj"
               }
             }
           }
@@ -81,14 +81,14 @@
         }
       }
     },
-    "C:\\Users\\all4l\\source\\repos\\uni\\uni\\uni.csproj": {
+    "C:\\Users\\all4l\\source\\repos\\co453\\ConsoleAppProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\all4l\\source\\repos\\uni\\uni\\uni.csproj",
-        "projectName": "uni",
-        "projectPath": "C:\\Users\\all4l\\source\\repos\\uni\\uni\\uni.csproj",
+        "projectUniqueName": "C:\\Users\\all4l\\source\\repos\\co453\\ConsoleAppProject.csproj",
+        "projectName": "ConsoleAppProject",
+        "projectPath": "C:\\Users\\all4l\\source\\repos\\co453\\ConsoleAppProject.csproj",
         "packagesPath": "C:\\Users\\all4l\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\all4l\\source\\repos\\uni\\uni\\obj\\",
+        "outputPath": "C:\\Users\\all4l\\source\\repos\\co453\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\all4l\\AppData\\Roaming\\NuGet\\NuGet.Config",
