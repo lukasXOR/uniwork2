@@ -21,3 +21,10 @@ C:\Users\all4l\source\repos\co453\obj\Debug\net6.0\ConsoleAppProject.csproj.Core
 C:\Users\all4l\source\repos\co453\obj\Debug\net6.0\ConsoleAppProject.dll
 C:\Users\all4l\source\repos\co453\obj\Debug\net6.0\refint\ConsoleAppProject.dll
 C:\Users\all4l\source\repos\co453\obj\Debug\net6.0\ConsoleAppProject.pdb
+C:\Users\all4l\source\repos\co453\bin\Debug\net6.0\ConsoleAppProject.exe
+C:\Users\all4l\source\repos\co453\bin\Debug\net6.0\ConsoleAppProject.deps.json
+C:\Users\all4l\source\repos\co453\bin\Debug\net6.0\ConsoleAppProject.runtimeconfig.json
+C:\Users\all4l\source\repos\co453\bin\Debug\net6.0\ConsoleAppProject.dll
+C:\Users\all4l\source\repos\co453\bin\Debug\net6.0\ConsoleAppProject.pdb
+C:\Users\all4l\source\repos\co453\obj\Debug\net6.0\ConsoleAppProject.genruntimeconfig.cache
+C:\Users\all4l\source\repos\co453\obj\Debug\net6.0\ref\ConsoleAppProject.dll

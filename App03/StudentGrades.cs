@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace ConsoleAppProject
+namespace ConsoleAppProject.App03
 {
     /// <summary>
     /// At the moment this class just tests the

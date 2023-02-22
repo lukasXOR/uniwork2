@@ -1,4 +1,6 @@
-﻿namespace ConsoleAppProject.App01 {
+﻿using System;
+namespace ConsoleAppProject.App01
+{
     /// <summary>
     /// The app will convert units
     /// </summary>

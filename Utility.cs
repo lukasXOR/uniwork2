@@ -1,6 +1,8 @@
+using System;
 using System.Reflection;
 namespace ConsoleAppProject {
-    public class Utility {
+    public class Utility
+    {
         /* 
         This will let us override previous and the current line of the terminal
         to let outputs look cleaner. It works by going through each line of the

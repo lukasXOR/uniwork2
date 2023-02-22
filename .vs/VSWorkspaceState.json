@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\App01",
-    "\\App02"
+    "\\App02",
+    "\\apptests"
   ],
-  "SelectedNode": "\\App01\\DistanceConverter.cs",
+  "SelectedNode": "\\co453.sln",
   "PreviewInSolutionExplorer": false
 }

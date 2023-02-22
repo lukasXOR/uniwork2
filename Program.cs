@@ -1,7 +1,7 @@
 ﻿using System;
 namespace ConsoleAppProject {
     public class Program {
-        public static void Main(string[] args) {
+    public static void Main(string[] args) {
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.Clear();
             Console.WriteLine("=================================================");
