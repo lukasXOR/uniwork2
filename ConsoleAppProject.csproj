@@ -6,51 +6,51 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Pages\bmicalculator.cshtml" />
-    <None Remove="Pages\distanceconverter.cshtml" />
-    <None Remove="Pages\Error.cshtml" />
-    <None Remove="Pages\Index.cshtml" />
-    <None Remove="Pages\Privacy.cshtml" />
-    <None Remove="Pages\Shared\_Layout.cshtml" />
-    <None Remove="Pages\Shared\_ValidationScriptsPartial.cshtml" />
-    <None Remove="Pages\_ViewImports.cshtml" />
-    <None Remove="Pages\_ViewStart.cshtml" />
+    <None Remove="WebPages\bmicalculator.cshtml" />
+    <None Remove="WebPages\distanceconverter.cshtml" />
+    <None Remove="WebPages\Error.cshtml" />
+    <None Remove="WebPages\Index.cshtml" />
+    <None Remove="WebPages\Privacy.cshtml" />
+    <None Remove="WebPages\Shared\_Layout.cshtml" />
+    <None Remove="WebPages\Shared\_ValidationScriptsPartial.cshtml" />
+    <None Remove="WebPages\_ViewImports.cshtml" />
+    <None Remove="WebPages\_ViewStart.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Pages\bmicalculator.cshtml">
+    <Content Include="WebPages\bmicalculator.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Include="Pages\distanceconverter.cshtml">
+    <Content Include="WebPages\distanceconverter.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Include="Pages\Error.cshtml">
+    <Content Include="WebPages\Error.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Include="Pages\Index.cshtml">
+    <Content Include="WebPages\Index.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Include="Pages\Privacy.cshtml">
+    <Content Include="WebPages\Privacy.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Include="Pages\Shared\_Layout.cshtml">
+    <Content Include="WebPages\Shared\_Layout.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Include="Pages\Shared\_ValidationScriptsPartial.cshtml">
+    <Content Include="WebPages\Shared\_ValidationScriptsPartial.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Include="Pages\_ViewImports.cshtml">
+    <Content Include="WebPages\_ViewImports.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Include="Pages\_ViewStart.cshtml">
+    <Content Include="WebPages\_ViewStart.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
