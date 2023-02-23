@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace ConsoleAppProject.App02
 {
     /// <summary>
@@ -23,25 +24,32 @@ namespace ConsoleAppProject.App02
         /*
         calculate, round, class and display the BMI score
         */
-        public double CalculateBMI(int unit, double weight, double height) {
+        public string CalculateBMI(int unit, double weight, double height) {
             double userBMI = (unit == 0 ? weight * 703 : weight) / Math.Pow(height, 2);
+
+            string webappOutput = "Your BMI is " + Math.Round(userBMI, 4) + " classed at: ";
 
             Console.Write(" is " + Math.Round(userBMI, 4) + " Classed at: ");
 
-            if (userBMI < 18.5) Console.WriteLine(Unit.Underweight);
-            else if (userBMI >= 18.5 && userBMI < 25) Console.WriteLine(Unit.Normal);
-            else if (userBMI >= 25 && userBMI < 30) Console.WriteLine(Unit.Overweight);
-            else if (userBMI >= 30 && userBMI < 35) Console.WriteLine(Unit.ObeseI);
-            else if (userBMI >= 35 && userBMI < 40) Console.WriteLine(Unit.ObeseII);
-            else if (userBMI >= 40) Console.WriteLine(Unit.ObeseIII);
+            Unit userCategory;
+
+            if (userBMI < 18.5) userCategory = Unit.Underweight;
+            else if (userBMI >= 18.5 && userBMI < 25) userCategory = Unit.Normal;
+            else if (userBMI >= 25 && userBMI < 30) userCategory = Unit.Overweight;
+            else if (userBMI >= 30 && userBMI < 35) userCategory = Unit.ObeseI;
+            else if (userBMI >= 35 && userBMI < 40) userCategory = Unit.ObeseII;
+            else if (userBMI >= 40) userCategory = Unit.ObeseIII;
+
+            Console.Write(userCategory);
+            webappOutput += userCategory;
 
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("note that you should assume these values are inaccurate if");
             Console.WriteLine("you are within minority ethnic groups (BAME) or that you are a");
             Console.WriteLine("child, pregnant or someone with a signigicant amount of muscle");
-            Console.ForegroundColor = ConsoleColor.Cyan; 
+            Console.ForegroundColor = ConsoleColor.Cyan;
 
-            return Math.Round(userBMI, 4);
+            return webappOutput;
         }
         /*
         display all the WHO weight categories. output it in a table. 

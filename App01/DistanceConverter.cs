@@ -22,10 +22,10 @@ namespace ConsoleAppProject.App01 {
         convert the units given, if the from and to unit are the same then dont bother in converting
         and just return the same value.
         */
-        public void ConvertUnit(string from, string to, double input) {
+        public double ConvertUnit(string from, string to, double input) {
             if (from.Equals(to)) {
                 Console.WriteLine(" " + from + " is " + input + " " + from);
-                return;
+                return input;
             }
             Console.Write(" " + from + " is ");
             /* 
@@ -35,6 +35,7 @@ namespace ConsoleAppProject.App01 {
             */
             Console.Write(typeof(DistanceUnits).GetMethod(from + "_" + to).Invoke(this, new object[]{input}));
             Console.WriteLine(" " + to);
+            return (double)typeof(DistanceUnits).GetMethod(from + "_" + to).Invoke(this, new object[] { input });
         }
     }
 }
