@@ -24,9 +24,8 @@ namespace ConsoleAppProject.App02
         /*
         calculate, round, class and display the BMI score
         */
-        public string CalculateBMI(int unit, double weight, double height) {
+        public double CalculateBMI(int unit, double weight, double height) {
             double userBMI = (unit == 0 ? weight * 703 : weight) / Math.Pow(height, 2);
-
             string webappOutput = "Your BMI is " + Math.Round(userBMI, 4) + " classed at: ";
 
             Console.Write(" is " + Math.Round(userBMI, 4) + " Classed at: ");

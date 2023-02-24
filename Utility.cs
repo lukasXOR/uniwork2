@@ -71,18 +71,18 @@ namespace ConsoleAppProject {
         filter an array by the string of the class name we want to fetch by all the compiled classes.
         */
         public static Type[] GetType(string type) {
-            Assembly a = typeof(Program).GetTypeInfo().Assembly;
-            return Array.FindAll(a.GetTypes(), c => c.ToString().Contains(type));
+            Assembly programAssembly = typeof(Program).GetTypeInfo().Assembly;
+            return Array.FindAll(programAssembly.GetTypes(), programClass => programClass.ToString().Contains(type));
         }
         /* 
         Fetch all class names to create the main menu, then reverse them because the assembly
         gives us the classes in the wrong order
         */
         public static string[] GetMenuOptions() {
-            Type[] t = GetType("App0");
-            string[] options = new string[t.Length];
-            for (var (i, x) = (t.Length - 1, 0); i >= 0; i--, x++) {
-                options[x] = t[i].Name;
+            Type[] appNames = GetType("App0");
+            string[] options = new string[appNames.Length];
+            for (var (i, x) = (appNames.Length - 1, 0); i >= 0; i--, x++) {
+                options[x] = appNames[i].Name;
             }
             return options;
         }
@@ -92,13 +92,13 @@ namespace ConsoleAppProject {
         public static void CreateMainMenu(string[] menuOptions) {
             CleanConsole();
             double option = CreateOption("Program to run: ", "menu", menuOptions);
-            Type t = GetType(menuOptions[(int)option])[0];
+            Type optionType = GetType(menuOptions[(int)option])[0];
 
             // we use the dynamic data type because we don't know what class to use until file compilation
-            dynamic d = Activator.CreateInstance(t);
+            dynamic programObject = Activator.CreateInstance(optionType);
 
-            Console.WriteLine(d.programDesc);
-            d.run();
+            Console.WriteLine(programObject.programDesc);
+            programObject.run();
 
             Console.Write("Enter to restart");
             Console.ReadLine();

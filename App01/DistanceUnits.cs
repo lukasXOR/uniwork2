@@ -1,9 +1,7 @@
 ﻿// conversion units taken from google and uniconverters.net
 
-namespace ConsoleAppProject
-{
-    public class DistanceUnits
-    {
+namespace ConsoleAppProject {
+    public class DistanceUnits {
         static double MILE_FEET = 5280;
         static double MILE_METER = 1609.34;
         static double MILE_YARD = 1760;
