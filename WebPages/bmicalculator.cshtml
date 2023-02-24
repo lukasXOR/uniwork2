@@ -10,15 +10,15 @@
             <table>
                 <tr>
                     <td>Unit System: </td>
-                <td>
+                    <td>
                     <select asp-for="UnitSystem" id="UnitSystem">          
                         <option value="imperial">imperial (pounds inches)</option>
                         <option value="metric">metric (kg metres)</option>
                     </select>
-                     </td>
+                    </td>
                 </tr>
 
-                 <tr>
+                <tr>
                     <td>Weight: </td>
                 <td>
                     <input asp-for="UserWeight" id="WeightInp" list="Weight"/>
@@ -36,7 +36,7 @@
                     <td><input type="submit" value="Convert" asp-page-handler="Calculate"/></td>
                  </tr>
                 </table>
-        @Model.output
+                @Model.output
                 <hr/>
                 <h5 style="color:red;">Warning:
             you should assume these values are inaccurate if

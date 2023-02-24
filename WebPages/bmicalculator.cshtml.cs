@@ -18,8 +18,7 @@ namespace webapp.Pages
 
 
         public string output;
-        public void OnPostCalculate()
-        {
+        public void OnPostCalculate() {
             output = calculator.CalculateBMI(UnitSystem == "imperial" ? 0 : 1, UserWeight, UserHeight);
         }
     }
