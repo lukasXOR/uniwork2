@@ -3,12 +3,13 @@ using System.Reflection;
 namespace ConsoleAppProject {
     public class Utility
     {
-        /* 
-        This will let us override previous and the current line of the terminal
-        to let outputs look cleaner. It works by going through each line of the
-        terminal and cleaning it until it goes back to the 4th line. The 5th line
-        is where the main headers are for the terminal so thats where we stop.
-        */
+
+        /// <summary>
+        /// This will clean every line of the console all the way back to the
+        /// original headers of the program. There are 4 lines of headers when
+        /// the program starts. So we keep looping until were back to the 4th line
+        /// of clearing.
+        /// </summary>
         public static void CleanConsole() {
             while (Console.CursorTop > 4) {
                 Console.CursorTop -= 1;
@@ -16,24 +17,31 @@ namespace ConsoleAppProject {
                 Console.Write(new string(' ', Console.BufferWidth - 1) + "\r");
             }
         }
-        /* 
-        Create numbered menu
-        */
-        public static string CreateMenu(string[] msg) {
-            for (int i = 0; i < msg.Length; i++)
+        /// <summary>
+        /// Creates a numbered menu
+        /// </summary>
+        /// <param name="messageOptions">An array containing options for the user to select.</param>
+        /// <returns>The users input</returns>
+        public static string CreateMenu(string[] messageOptions) {
+            for (int i = 0; i < messageOptions.Length; i++)
                 // (i + 1) because we want the options to start with 1
-                Console.WriteLine((i + 1) + " " + msg[i]);
+                Console.WriteLine((i + 1) + " " + messageOptions[i]);
             return Console.ReadLine();
         }
-        /*
-        Retrieve inputs from user with creating a menu
-        it can take a menu option and also an actual value
-        */
-        public static Double CreateOption(string input, string type, string[] menu) {
+        /// <summary>
+        /// Get inputs from the user, whether its from a menu, prompt or by the console line.
+        /// </summary>
+        /// <param name="messagePrompt">A string that the user sees first a message</param>
+        /// <param name="type">The type of input that will be needed from the user</param>
+        /// <returns>A double that will be a menu option or a number that is from a prompt</returns>
+        /// <exception cref="FormatException">
+        /// When the option contains letters
+        /// </exception>
+        public static Double CreateOption(string messagePrompt, string type, string[] menu) {
             Double option;
             do {
                 try {
-                    Console.WriteLine(input);
+                    Console.WriteLine(messagePrompt);
                     switch (type) {
                         case "menu":
                             option = Double.Parse(CreateMenu(menu));
@@ -55,29 +63,34 @@ namespace ConsoleAppProject {
                             Console.CursorLeft = s.Length;
                             return Double.Parse(s);
                     }
-                } catch (FormatException) { // this will be caught if letters are detected
+                } catch (FormatException) {
                     CleanConsole();
                     Console.WriteLine("Please enter a number according to the menu");
                     continue;
                 }
             } while (true); // infinite loop (true == true), until the user inputs a valid option
         }
-        /* 
-        This lets us find a class by a string, it works by first fetching the assembly,
-        the assembly is the compiled file (dll, exe) that contains everything needed to run
-        the program, we are using it here to get all the classes. We first get the assembly by
-        using any class in the program with the GetTypeInfo(), which returns a TypeInfo which is just
-        an extension of Type that contains the assembly (.Assembly). From here we create and 
-        filter an array by the string of the class name we want to fetch by all the compiled classes.
-        */
+
+        /// <summary>
+        /// This lets us find a class by a string, it works by first fetching the assembly,
+        /// the assembly is the compiled file (dll, exe) that contains everything needed to run
+        /// the program, we are using it here to get all the classes. We first get the assembly by
+        /// using any class in the program with the GetTypeInfo(), which returns a TypeInfo which is just
+        /// an extension of Type that contains the assembly (.Assembly). From here we create and
+        /// filter an array by the string of the class name we want ot fetch by all the compiles classes.
+        /// </summary>
+        /// <param name="type">Name of program.</param>
+        /// <returns>An array containing the type of the desired program</returns>
         public static Type[] GetType(string type) {
             Assembly programAssembly = typeof(Program).GetTypeInfo().Assembly;
             return Array.FindAll(programAssembly.GetTypes(), programClass => programClass.ToString().Contains(type));
         }
-        /* 
-        Fetch all class names to create the main menu, then reverse them because the assembly
-        gives us the classes in the wrong order
-        */
+        /// <summary>
+        /// Fetch all the classes names that have 'App0' in them
+        /// as the programs go from App01, App02 etc. Then put them in
+        /// an array in reverse order because GetType() will give us
+        /// a list of the classes going from last to first.
+        /// </summary>
         public static string[] GetMenuOptions() {
             Type[] appNames = GetType("App0");
             string[] options = new string[appNames.Length];
@@ -86,9 +99,14 @@ namespace ConsoleAppProject {
             }
             return options;
         }
-        /* 
-        Get the program the user wants to use and instantiate it.
-        */
+        /// <summary>
+        /// Create a menu for the user to select their option
+        /// then start that program by instantiating an object
+        /// of that programs class
+        /// </summary>
+        /// <param name="menuOptions">
+        /// An array of all the program names
+        /// </param> 
         public static void CreateMainMenu(string[] menuOptions) {
             CleanConsole();
             double option = CreateOption("Program to run: ", "menu", menuOptions);

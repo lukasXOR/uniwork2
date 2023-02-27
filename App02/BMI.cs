@@ -10,9 +10,6 @@ namespace ConsoleAppProject.App02
     public class BMI {
         public string programDesc = "BMI Calculator";
         public string[] menuOptions = { "imperial pounds inches", "metric kg metres" };
-        /*
-        get needed inputs from users
-        */
         public void run() {
             double optionUnit = Utility.CreateOption("unit?", "menu", menuOptions);
             string[] info = menuOptions[(int)optionUnit].Split(" ");
@@ -21,10 +18,17 @@ namespace ConsoleAppProject.App02
             CalculateBMI((int)optionUnit, optionWeight, optionHeight);
             DisplayWeightTable();
         }
-        /*
-        calculate, round, class and display the BMI score
-        */
-        public double CalculateBMI(int unit, double weight, double height) {
+        /// <summary>
+        /// Calculate the BMI, round it to 4 decimal places, class it under the WHO
+        /// regulations and display it.
+        /// </summary>
+        /// <param name="unit">The unit to be used for calculation</param>
+        /// <param name="weight">The users weight</param>
+        /// <param name="height">The users height</param>
+        /// <returns>A string which will be a message containg the users BMI and the class
+        /// which will be for the web app
+        /// </returns>
+        public string CalculateBMI(int unit, double weight, double height) {
             double userBMI = (unit == 0 ? weight * 703 : weight) / Math.Pow(height, 2);
             string webappOutput = "Your BMI is " + Math.Round(userBMI, 4) + " classed at: ";
 
@@ -50,9 +54,9 @@ namespace ConsoleAppProject.App02
 
             return webappOutput;
         }
-        /*
-        display all the WHO weight categories. output it in a table. 
-        */
+        /// <summary>
+        /// Display all the WHO weight categories and output it in a table
+        /// </summary>
         public void DisplayWeightTable() {
             string[] weightCategory = {"WHO Weight Status", "Underweight", "Normal", "Overweight", "Obese Class I", "Obese Class II", "Obese Class III" };
             string[] BMIRange = {"BMI (kg/m^2)", "<= 18.50", "18.5 - 24.9", "25.0 - 29.9", "30.0 - 34.9", "35.0 - 39.9", ">= 40.0" };
@@ -61,11 +65,9 @@ namespace ConsoleAppProject.App02
             int BMIRangeTitleLength = BMIRange[0].Length;
 
             for (int i = 0; i < weightCategory.Length; i++) {
-                Console.Write("|");
-                Console.Write(weightCategory[i].PadRight(weightCategoryTitleLength));
-                Console.Write("|");
-                Console.Write(BMIRange[i].PadRight(BMIRangeTitleLength));
-                Console.WriteLine("|");
+                Console.Write('|' + weightCategory[i].PadRight(weightCategoryTitleLength));
+                Console.Write('|' + BMIRange[i].PadRight(BMIRangeTitleLength));
+                Console.WriteLine('|');
             }
         }
     }

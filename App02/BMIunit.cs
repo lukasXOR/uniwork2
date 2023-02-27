@@ -1,7 +1,6 @@
 namespace ConsoleAppProject
 {
-    public enum Unit
-    {
+    public enum Unit {
         Underweight,
         Normal,
         Overweight,

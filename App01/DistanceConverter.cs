@@ -7,21 +7,21 @@ namespace ConsoleAppProject.App01 {
     /// lukas
     public class DistanceConverter {
         public string programDesc = "Distance Converter";
-        // we will use the index of the array to create a numbered menu AND to take the users option
         public string[] menuOptions = {"miles", "feet", "metres", "yards", "inches", "centimetres"};
-        /*
-        get needed inputs from user
-        */
         public void run() {
             double optionFrom = Utility.CreateOption("unit to convert from?", "menu", menuOptions);
             double optionTo = Utility.CreateOption(menuOptions[(int)optionFrom] + " to?", "menu", menuOptions);
             double input = Utility.CreateOption("enter " + menuOptions[(int)optionFrom], "display", menuOptions);
             ConvertUnit(menuOptions[(int)optionFrom], menuOptions[(int)optionTo], input);
         }
-        /*
-        convert the units given, if the from and to unit are the same then dont bother in converting
-        and just return the same value.
-        */
+        /// <summary>
+        /// Convert the units given, if the from and to unit are the same, then don't convert
+        /// instead just output the value.
+        /// </summary>
+        /// <param name="from">The unit to be converted from</param>
+        /// <param name="to">The unit to be converted to</param>
+        /// <param name="input">The value to be converted</param>
+        /// <returns>A double which will be the converted value which is returned for the web app.</returns>
         public double ConvertUnit(string from, string to, double input) {
             if (from.Equals(to)) {
                 Console.WriteLine(" " + from + " is " + input + " " + from);
@@ -32,7 +32,7 @@ namespace ConsoleAppProject.App01 {
             getMethod() lets us find a function in a given class based on a string
             Invoke() lets us use that function which then we can call the conversion methods,
             you can pass arguments by giving it an object of parametres
-            */
+            */  
             Console.Write(typeof(DistanceUnits).GetMethod(from + "_" + to).Invoke(this, new object[]{input}));
             Console.WriteLine(" " + to);
             return (double)typeof(DistanceUnits).GetMethod(from + "_" + to).Invoke(this, new object[] { input });
