@@ -33,9 +33,9 @@ namespace ConsoleAppProject.App01 {
             Invoke() lets us use that function which then we can call the conversion methods,
             you can pass arguments by giving it an object of parametres
             */  
-            Console.Write(typeof(DistanceUnits).GetMethod(from + "_" + to).Invoke(this, new object[]{input}));
-            Console.WriteLine(" " + to);
-            return (double)typeof(DistanceUnits).GetMethod(from + "_" + to).Invoke(this, new object[] { input });
+            Double convertedValue = (double)typeof(DistanceUnits).GetMethod(from + "_" + to).Invoke(this, new object[] { input });
+            Console.WriteLine(convertedValue + " " + to);
+            return convertedValue;
         }
     }
 }
