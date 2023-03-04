@@ -1,0 +1,8 @@
+C:\Users\all4l\source\repos\co453\obj\Debug\net6.0\ConsoleAppProject.csproj.AssemblyReference.cache
+C:\Users\all4l\source\repos\co453\obj\Debug\net6.0\ConsoleAppProject.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\all4l\source\repos\co453\obj\Debug\net6.0\ConsoleAppProject.AssemblyInfoInputs.cache
+C:\Users\all4l\source\repos\co453\obj\Debug\net6.0\ConsoleAppProject.AssemblyInfo.cs
+C:\Users\all4l\source\repos\co453\obj\Debug\net6.0\ConsoleAppProject.csproj.CoreCompileInputs.cache
+C:\Users\all4l\source\repos\co453\obj\Debug\net6.0\ConsoleAppProject.dll
+C:\Users\all4l\source\repos\co453\obj\Debug\net6.0\refint\ConsoleAppProject.dll
+C:\Users\all4l\source\repos\co453\obj\Debug\net6.0\ConsoleAppProject.pdb

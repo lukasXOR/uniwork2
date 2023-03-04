@@ -1,0 +1,43 @@
+﻿@page
+@model webapp.Pages.distanceconverterModel
+@{
+    ViewData["Title"] = "lukas distance converter";
+}
+@using ConsoleAppProject.App01
+<h1>Distance Converter</h1>
+@{
+    <form method="post">
+        <table>
+            <tr>
+                <td>From Unit: </td>
+                <td>
+                    <select asp-for="FromUnit" id="FromUnit">          
+                    @foreach (var unit in Model.converter.menuOptions) {
+                         <option value="@unit.ToString()">@unit</option>
+                    }
+                    </select>
+                 </td>
+            </tr>
+            <tr>
+                <td>To Unit: </td>
+                <td>
+                    <select asp-for="ToUnit" id="ToUnit">
+                        @foreach (var unit in Model.converter.menuOptions){
+                            <option value="@unit.ToString()">@unit</option>
+                    }
+                    </select>
+                 </td>
+            </tr>
+            <tr>
+                <td>Value: </td>
+                <td><input type="text" id="txtConversionValue" name="ConversionValue" /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Convert" asp-page-handler="Convert"/></td>
+             </tr>
+            </table>
+            <hr/>
+        @Model.Conversion
+    </form>
+}
