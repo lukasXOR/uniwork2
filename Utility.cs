@@ -1,17 +1,19 @@
 using System;
 using System.Reflection;
-namespace ConsoleAppProject {
+namespace ConsoleAppProject
+{
     public class Utility
     {
-
         /// <summary>
         /// This will clean every line of the console all the way back to the
         /// original headers of the program. There are 4 lines of headers when
         /// the program starts. So we keep looping until were back to the 4th line
         /// of clearing.
         /// </summary>
-        public static void CleanConsole() {
-            while (Console.CursorTop > 4) {
+        public static void CleanConsole(int lineNumber)
+        {
+            while (Console.CursorTop > lineNumber)
+            {
                 Console.CursorTop -= 1;
                 Console.SetCursorPosition(0, Console.CursorTop);
                 Console.Write(new string(' ', Console.BufferWidth - 1) + "\r");
@@ -22,7 +24,8 @@ namespace ConsoleAppProject {
         /// </summary>
         /// <param name="messageOptions">An array containing options for the user to select.</param>
         /// <returns>The users input</returns>
-        public static string CreateMenu(string[] messageOptions) {
+        public static string CreateMenu(string[] messageOptions)
+        {
             for (int i = 0; i < messageOptions.Length; i++)
                 // (i + 1) because we want the options to start with 1
                 Console.WriteLine((i + 1) + " " + messageOptions[i]);
@@ -37,34 +40,41 @@ namespace ConsoleAppProject {
         /// <exception cref="FormatException">
         /// When the option contains letters
         /// </exception>
-        public static Double CreateOption(string messagePrompt, string type, string[] menu) {
+        public static Double CreateOption(string messagePrompt, string type, string[] menu)
+        {
             Double option;
-            do {
-                try {
+            do
+            {
+                try
+                {
                     Console.WriteLine(messagePrompt);
-                    switch (type) {
+                    switch (type)
+                    {
                         case "menu":
                             option = Double.Parse(CreateMenu(menu));
-                            CleanConsole();
-                            if (option > menu.Length || option == 0) {
+                            CleanConsole(5);
+                            if (option > menu.Length || option == 0)
+                            {
                                 Console.WriteLine("Option provided is outside of menu range");
                                 continue;
                             }
                             return option - 1;
                         case "input":
                             option = Double.Parse(Console.ReadLine());
-                            CleanConsole();
+                            CleanConsole(5);
                             return option;
                         case "display":
                             // get the input and then go back to that position
-                            // we can display the answer after it
+                            // so we can display the answer after it
                             string s = Console.ReadLine();
                             Console.CursorTop--;
                             Console.CursorLeft = s.Length;
                             return Double.Parse(s);
                     }
-                } catch (FormatException) {
-                    CleanConsole();
+                }
+                catch (FormatException)
+                {
+                    CleanConsole(5);
                     Console.WriteLine("Please enter a number according to the menu");
                     continue;
                 }
@@ -81,7 +91,8 @@ namespace ConsoleAppProject {
         /// </summary>
         /// <param name="type">Name of program.</param>
         /// <returns>An array containing the type of the desired program</returns>
-        public static Type[] GetType(string type) {
+        public static Type[] GetType(string type)
+        {
             Assembly programAssembly = typeof(Program).GetTypeInfo().Assembly;
             return Array.FindAll(programAssembly.GetTypes(), programClass => programClass.ToString().Contains(type));
         }
@@ -91,12 +102,12 @@ namespace ConsoleAppProject {
         /// an array in reverse order because GetType() will give us
         /// a list of the classes going from last to first.
         /// </summary>
-        public static string[] GetMenuOptions() {
+        public static string[] GetMenuOptions()
+        {
             Type[] appNames = GetType("App0");
             string[] options = new string[appNames.Length];
-            for (var (i, x) = (appNames.Length - 1, 0); i >= 0; i--, x++) {
+            for (var (i, x) = (appNames.Length - 1, 0); i >= 0; i--, x++)
                 options[x] = appNames[i].Name;
-            }
             return options;
         }
         /// <summary>
@@ -107,15 +118,17 @@ namespace ConsoleAppProject {
         /// <param name="menuOptions">
         /// An array of all the program names
         /// </param> 
-        public static void CreateMainMenu(string[] menuOptions) {
-            CleanConsole();
+         public static void CreateMainMenu(string[] menuOptions)
+        {
+            CleanConsole(4);
             double option = CreateOption("Program to run: ", "menu", menuOptions);
+            CleanConsole(4);
             Type optionType = GetType(menuOptions[(int)option])[0];
 
             // we use the dynamic data type because we don't know what class to use until file compilation
             dynamic programObject = Activator.CreateInstance(optionType);
 
-            Console.WriteLine(programObject.programDesc);
+            Console.WriteLine(programObject.programDescription);
             programObject.run();
 
             Console.Write("Enter to restart");
