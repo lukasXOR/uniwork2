@@ -10,7 +10,7 @@ namespace ConsoleAppProject.App02
     /// lukas
     public class BMI
     {
-        public string programDesc = "BMI Calculator";
+        public string programDescription = "BMI Calculator";
         public string[] menuOptions = { "imperial pounds inches", "metric kg metres" };
         public void run()
         {
