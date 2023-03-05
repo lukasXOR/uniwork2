@@ -5,10 +5,8 @@ namespace ConsoleAppProject
     public class Utility
     {
         /// <summary>
-        /// This will clean every line of the console all the way back to the
-        /// original headers of the program. There are 4 lines of headers when
-        /// the program starts. So we keep looping until were back to the 4th line
-        /// of clearing.
+        /// This will clear every line of the console all the way back to the
+        /// original headers of the program.
         /// </summary>
         public static void CleanConsole(int lineNumber)
         {
@@ -36,6 +34,7 @@ namespace ConsoleAppProject
         /// </summary>
         /// <param name="messagePrompt">A string that the user sees first a message</param>
         /// <param name="type">The type of input that will be needed from the user</param>
+        /// <param name="menu">A string array of the menu options</param>
         /// <returns>A double that will be a menu option or a number that is from a prompt</returns>
         /// <exception cref="FormatException">
         /// When the option contains letters
@@ -87,7 +86,7 @@ namespace ConsoleAppProject
         /// the program, we are using it here to get all the classes. We first get the assembly by
         /// using any class in the program with the GetTypeInfo(), which returns a TypeInfo which is just
         /// an extension of Type that contains the assembly (.Assembly). From here we create and
-        /// filter an array by the string of the class name we want ot fetch by all the compiles classes.
+        /// filter an array by the string of the class name we want to fetch by all the compiled classes.
         /// </summary>
         /// <param name="type">Name of program.</param>
         /// <returns>An array containing the type of the desired program</returns>
@@ -113,13 +112,14 @@ namespace ConsoleAppProject
         /// <summary>
         /// Create a menu for the user to select their option
         /// then start that program by instantiating an object
-        /// of that programs class
+        /// of that program's class
         /// </summary>
         /// <param name="menuOptions">
         /// An array of all the program names
         /// </param> 
          public static void CreateMainMenu(string[] menuOptions)
         {
+            Console.Title = "[CO453] Apps Menu";
             CleanConsole(4);
             double option = CreateOption("Program to run: ", "menu", menuOptions);
             CleanConsole(4);
@@ -128,6 +128,7 @@ namespace ConsoleAppProject
             // we use the dynamic data type because we don't know what class to use until file compilation
             dynamic programObject = Activator.CreateInstance(optionType);
 
+            Console.Title = "[CO453] " + programObject.programDescription;
             Console.WriteLine(programObject.programDescription);
             programObject.run();
 
