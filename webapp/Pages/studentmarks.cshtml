@@ -1,0 +1,28 @@
+﻿@page
+@model webapp.Pages.studentClass
+@{
+    ViewData["Title"] = "lukas student marks";
+}
+@using ConsoleAppProject.App03
+<h1>Student Marks</h1>
+<button type="button" id="addStudentBtn">Add Student</button>
+<button onclick="window.location.href = '/studentmarksanalyse'" type="button">Analyse</button>
+<table id="studentTable">
+    <tr>
+        <td>Student name: </td>
+        <td>
+            <input asp-for="studentName" id="studentName" required>
+        </td>
+    </tr>
+    <tr>
+        <td>Student Mark: </td>
+        <td>
+        <input asp-for="studentMark" id="studentMark" requried>
+        </td>
+    </tr>
+    <tr>
+    </tr>
+</table>
+<hr />
+<section id="studentSection">
+</section>
