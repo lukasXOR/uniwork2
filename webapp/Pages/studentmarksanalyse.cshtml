@@ -1,7 +1,33 @@
-﻿@page
-@model webapp.Pages.studentAnalyseClass
+@page
+@model webapp.Pages.studentAnalyse
 @{
     ViewData["Title"] = "lukas student marks analyse";
 }
 @using ConsoleAppProject.App03
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <h1>Analytics for student marks</h1>
+<section>
+    <h2>Stats</h2>
+    <table>
+        <tr>
+            <td>Num of Students: </td>
+            <td id="numStudents">nigger</td>
+        </tr>
+        <tr>
+            <td>Min mark</td>
+            <td id="minStudents">nigger</td>
+        </tr>
+        <tr>
+            <td>Max mark</td>
+            <td id="maxStudents">nigger</td>
+        </tr>
+        <tr>
+            <td>Mean mark</td>
+            <td id ="meanStudents">nigger</td>
+        </tr>
+    </table>
+</section>
+<div id="studentAnalyse">
+
+</div>
+<div id="piechart" style="width: 900px; height: 500px;"></div>
