@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 namespace ConsoleAppProject.App03
 {
     /// <summary>
@@ -17,7 +17,7 @@ namespace ConsoleAppProject.App03
 
             for (int i = 0; i < numOfStudents; i++)
             {
-                Console.Write("Enter Student #" + (i + 1) + " grade: ");
+                Console.Write("Enter Student #" + (i + 1) + "/" + numOfStudents + " grade: ");
                 students[i] = Convert.ToInt32(Console.ReadLine());
             }
             while (true)
@@ -45,7 +45,12 @@ namespace ConsoleAppProject.App03
                 Console.Write("Enter to go back to menu");
                 Console.ReadLine();
             }
-        }   
+        }
+        /// <summary>
+        /// Get a custom mark from the the students
+        /// </summary>
+        /// <param name="type">A string of the statistic the user wants</param>
+        /// <returns>An int of the users statistic</returns>
         public int FindMark(string type)
         {
             switch (type)
@@ -79,6 +84,12 @@ namespace ConsoleAppProject.App03
             }
             return 0;
         }
+        /// <summary>
+        /// Get the grade of a student using their mark
+        /// </summary>
+        /// <param name="grade">A int of the students grade</param>
+        /// <returns>A grade</returns>
+
         public Grades FindGrade(int grade)
         {
             if (grade <= 39) return Grades.F;
@@ -89,6 +100,9 @@ namespace ConsoleAppProject.App03
 
             return Grades.A;
         }
+        /// <summary>
+        /// Log all the students mark and their grade
+        /// </summary>
         public void DisplayStudentStats()
         {
             for (int i = 0; i < students.Length; i++)
@@ -96,6 +110,9 @@ namespace ConsoleAppProject.App03
                 Console.WriteLine("Student #" + (i + 1) + " has mark: " + students[i] + " with grade at " + FindGrade(students[i]));
             }
         }
+        /// <summary>
+        /// Log a grade profile of all the students
+        /// </summary>
         public void DisplayGradeProfile()
         {
             int studentLength = students.Length;
