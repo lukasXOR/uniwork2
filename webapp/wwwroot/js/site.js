@@ -1,7 +1,6 @@
-// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
-
-// Write your JavaScript code.
+// I was not able to get DbContext or MVC to work, therefore I had to resort to
+// JavaScript and cookies (localStorage) to store students
+// I transpiled my C# methods to JS so the calculations are still the same
 
 let studentDBJSON = {}
 let addStudentBtn = document.getElementById("addStudentBtn") || {}
@@ -61,7 +60,6 @@ class Students {
         return 'A';
     }
     getGradeProfile() {
-        let studentLength = Object.keys(this.students).length
         let grades = {
             A: 0,
             B: 0,
@@ -89,7 +87,7 @@ class Students {
             }
         }
         for (const grade in grades) {
-            grades[grade] = Math.round((grades[grade] / studentLength) * 100)
+            grades[grade] = Math.round((grades[grade] / this.studentLength) * 100)
         }
         return grades
     }
@@ -115,28 +113,35 @@ class Students {
         return Math.round(meanMark / this.studentsLength)
     }
 }
+
+
+if (location.href.includes('studentmarksanalyse')) addStudentAnalytics()
+
 function getStudentGradeHTML(name, grade) {
     return `
   <div class="grade">
     ${name}: ${grade}%
   </div>
 `
-}
-if (location.href.includes('studentmarksanalyse')) addStudentAnalytics()
+} 
+
 function addStudentAnalytics() {
     let studentCookie = JSON.parse(localStorage.getItem('students'))
     let studentGrades = new Students(studentCookie)
     let studentAnalyseID = document.getElementById('studentAnalyse')
     let gradeProfile = studentGrades.getGradeProfile()
-    let studentGradeArray = [['test','test']]
+    let studentGradeArray = [['test', 'test']]
+
     document.getElementById('numStudents').innerText = studentGrades.studentsLength
     document.getElementById('minStudents').innerText = studentGrades.min
     document.getElementById('maxStudents').innerText = studentGrades.max
     document.getElementById('meanStudents').innerText = studentGrades.mean
+
     for (grade in gradeProfile) {
         studentAnalyseID.innerHTML += getStudentGradeHTML(grade, gradeProfile[grade])
         studentGradeArray.push([grade, gradeProfile[grade]])
     }
+
     google.charts.load('current', { 'packages': ['corechart'] });
     google.charts.setOnLoadCallback(function () { drawChart(studentGradeArray) });
 }
