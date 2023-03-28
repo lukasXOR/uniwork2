@@ -1,0 +1,26 @@
+﻿@page
+@model webapp.Pages.socialnetworkModel
+@{
+}
+ <h2>Social Network</h2>
+    <table class="test"style="">
+      <caption>All Posts</caption>
+      <tr style="background-color: Mediumseagreen">
+         <th>S.no</th>
+         <th>Name</th>
+         <th>Age</th>
+         <th>Country</th>
+      </tr>
+   </table>
+<table id="allPosts" class="test" style="width:80%;float:right;">
+    <caption>All Posts</caption>
+        <tr id="Post" style="background-color: sienna">
+            <th>Post ID</th>
+            <th>Author</th>
+            <th>Message Type</th>
+            <th>Message</th>
+            <th>Likes</th>
+            <th>Comments</th>
+        </tr>
+</table>
+ <script src="~/js/socialnetwork.js" asp-append-version="true"></script>
