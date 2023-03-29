@@ -1,3 +1,9 @@
+/*
+Again I couldn't get MVC or DbContext to work so I had to resort to Javascript.
+As JS has the option of functional or OOP, I was still able to use inhreitance for
+post classes. I also used Set() which is the equalivant of List<T> in C#
+*/
+
 class Post {
     constructor(id, username, message) {
         this.id = id
@@ -30,6 +36,9 @@ class PhotoPost extends Post {
     }
 }
 
+/*
+Class for interacting with the DOM
+*/
 class Page {
     constructor() {
     }
