@@ -1,26 +1,41 @@
-﻿@page
+@page
 @model webapp.Pages.socialnetworkModel
 @{
 }
  <h2>Social Network</h2>
-    <table class="test"style="">
-      <caption>All Posts</caption>
-      <tr style="background-color: Mediumseagreen">
-         <th>S.no</th>
-         <th>Name</th>
-         <th>Age</th>
-         <th>Country</th>
-      </tr>
-   </table>
-<table id="allPosts" class="test" style="width:80%;float:right;">
+<table id="allPosts" class="test" style="float:right;width:70%;">
     <caption>All Posts</caption>
-        <tr id="Post" style="background-color: sienna">
-            <th>Post ID</th>
-            <th>Author</th>
-            <th>Message Type</th>
-            <th>Message</th>
-            <th>Likes</th>
-            <th>Comments</th>
-        </tr>
+    <tr id="Post" style="background-color: sienna">
+        <th>Post ID</th>
+        <th>Author</th>
+        <th>Message Type</th>
+        <th>Message</th>
+        <th>Likes</th>
+    </tr>
 </table>
+    <table class="test"style="">
+      <tr style="background-color: sienna">
+        <th>Add post</th>
+      </tr>
+    </table>
+    <div style="display: block;">
+        <input placeholder="Username" id="MessageUserName">
+    </div>
+    <div>
+        <div>Message Type:
+        <div style="display:inline-block">
+            <select id="MessageType" onchange="messageTypeChange()">
+                <option value="message">Message</option>
+                <option value="photo">Photo</option>
+            </select>
+        </div>
+    </div>
+        <div style="display: block;">
+            <input placeholder="Message"id="MessageValue">
+        </div>
+    <div style="display: block;">
+        <input placeholder="File name" id="MessageFileName" disabled>
+    </div>
+    </div>
+<button id="AddPostButton"type="button" onclick="addPost()">Add post</button>
  <script src="~/js/socialnetwork.js" asp-append-version="true"></script>
