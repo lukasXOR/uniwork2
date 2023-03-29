@@ -3,8 +3,9 @@ class Post {
         this.id = id
         this.username = username
         this.message = message
+        this.messageType = this.constructor.name
         this.timestamp = Date.now()
-        this.likes = Math.round(Math.random() * 10000) + 1000
+        this.likes = 0
         this.comments = []
     }
     Like() {
@@ -13,8 +14,8 @@ class Post {
     Unlike() {
         this.likes--
     }
-    AddComent(user, message) {
-        this.comments.push({ username: user, message: message })
+    AddComment(info) {
+        this.comments.push(info)
     }
 }
 class MessagePost extends Post {
@@ -33,17 +34,19 @@ class Page {
     constructor() {
     }
     addPost(data) {
+        var commentData = ''
+        data.comments.forEach(comment => commentData += 'User: ' + comment.username + ' Message: ' + comment.message)
         document.getElementById('Post').insertAdjacentHTML('afterend', `
-    <tr id="Post${data.id}">
-         <td>${data.id}</td>
-         <td>${data.username}</td>
-         <td>${data.timestamp}</td>
-         <td>${data.message}</td>
-         <td>${data.likes}</td>
-         <td>${data.comments}</td>
-        <th><button type="button">Like</button></th>
-        <th><button type="button">Comment</button></th>
-    </tr>
+        <tr id="Post${data.id}">
+             <td>${data.id}</td>
+             <td>${data.username}</td>
+             <td>${data.messageType}</td>
+             <td>${data.message}</td>
+             <td>${data.likes}</td>
+            <th><button id="${data.id}" type="button" onclick="LikeUnlike(this.id, this.innerText, this)">Like</button></th>
+            <th><button id="${data.id}" type="button" onclick="addComment(this.id)">Add Comment</button></th>
+            <td>${commentData}</td>
+        </tr>
     `)
     }
     RemovePost(id) {
@@ -58,7 +61,6 @@ class Page {
                     <th>Message Type</th>
                     <th>Message</th>
                     <th>Likes</th>
-                    <th>Comments</th>
                 </tr>
         `
         posts.forEach(post => this.addPost(post))
@@ -81,15 +83,24 @@ class NewsFeed extends Page {
     }
     populate() {
         for (let i = 0; i < 10; i++) {
-            this.AddPost('message', { username: 'lukas', message: 'hello' })
+            this.AddPost({ username: 'lukas', message: 'hello', type: 'message' })
         }
         this.RemovePost('id', 30)
         super.display(this.posts)
+        this.ChangePost(5, 'AddComment', { username: 'lukas', message: 'hello' })
         
     }
-    AddPost(type, data) {
-        this.ID++
-        this.posts.add(new this.postTypes[type](this.ID, data))
+    /*
+     * {
+     * type: 'message', 'photo',
+     * username: name,
+     * message: message,
+     * fileName: filename
+     * }
+     */
+    AddPost(data) {
+        this.posts.add(new this.postTypes[data.type](++this.ID, data))
+        super.display(this.posts)
     }
     RemovePost(type, data) {
         if (type === 'all') this.posts.clear()
@@ -97,17 +108,45 @@ class NewsFeed extends Page {
             if (post[type] === data) this.posts.delete(post)
         })
     }
-    GetPost(type, data) { // type: message username id timestamp
+    GetPosts(type, data) { // type: message username id timestamp
         if (type === 'all') return this.posts
         var posts = new Set()
         for (const post of this.posts.values())
             if (post[type] === data) posts.add(post)
         return posts
     }
+    // Like Unlike Addcomment
+    ChangePost(id, type, args) {
+        this.GetPosts('id', parseInt(id)).forEach(post => post[type](args))
+        super.display(this.posts)
+    }
+
 }
-
-
-
-window.onload = (() => {
-    window.document.body.onload = new NewsFeed
-})  
+window.news = new NewsFeed()
+function getId(id) {
+    return document.getElementById(id)
+}
+function LikeUnlike(id, type, element) {
+    var oldElement = getId(id).innerText
+    window.news.ChangePost(id, type)
+    if (oldElement === 'Like') getId(id).innerText = 'Unlike'
+    if (oldElement === 'Unlike') getId(id).innerText = 'Like'
+}
+function messageTypeChange() {
+    var typeElement = getId('MessageType').value
+    if (typeElement === 'photo') getId('MessageFileName').disabled = false
+    else getId('MessageFileName').disabled = true
+}
+function addPost() {
+    var data = {
+        username: getId('MessageUserName').value,
+        type: getId('MessageType').value,
+        message: getId('MessageValue').value,
+        fileName: getId('MessageFileName').value
+    }
+    window.news.AddPost(data)
+}
+function addComment(id) {
+    var comment = prompt('Enter comment')
+    window.news.ChangePost(id, 'AddComment', {username: 'lukas', message: comment})
+}
