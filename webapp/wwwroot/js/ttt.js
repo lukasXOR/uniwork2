@@ -1,4 +1,6 @@
-﻿/******/ (() => { // webpackBootstrap
+// Minified via webpack from /wwwroot/js/tictactoe
+
+/******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
 /***/ 182:
