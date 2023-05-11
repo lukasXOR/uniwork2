@@ -1,0 +1,59 @@
+﻿@page
+@model webapp.Pages.tttModel
+@{
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>App 05</title>
+        <link href="styles.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <style>
+            body {
+                text-align: center;
+            }
+
+            #tic-tac-toe-board {
+                display: block;
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            #title, #winner {
+                font-family: arial;
+                font-size: 30px;
+                text-align: center;
+                font-weight: bold;
+                text-align: center;
+            }
+        </style>
+        <div style="display:inline-block;left:0;position:absolute;font-family:Arial;">
+
+            <h3>Menu</h3>
+
+            <select id="player1">
+                <option value="Player">Player</option>
+                <option value="AI">AI</option>
+            </select>
+            VS
+            <select id="player2">
+                <option value="AI">AI</option>
+                <option value="Player">Player</option>
+            </select>
+
+            <button id="newGame">Reset</button>
+
+        </div>
+
+        <div id="title" style="display:inline-block;">App05 TicTacToe by Lukas</div>
+
+        <div id="winner">Your Move</div>
+
+        <canvas id="tic-tac-toe-board" styles=""></canvas>
+    </body>
+    <script src="~/js/ttt.js" asp-append-version="true"></script>
+    </html>
+}
